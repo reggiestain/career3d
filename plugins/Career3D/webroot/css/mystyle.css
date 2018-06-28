@@ -1,0 +1,30 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 30, 2017, 8:34:49 PM
+    Author     : Moshakes
+*/
+.custom-r{
+border-bottom:1px solid #ddd !important;    
+}
+.form-label{
+ font-size: 20px;   
+}
+#bottom-text{
+font-size: 20px;    
+}
+.alert-div{
+//height:34px;    
+}
+
+.form-control {
+ font-size: 18px !important;
+ height: 40px !important;
+}
+.close{
+font-size:40px !important;    
+}
+
