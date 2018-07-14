@@ -14,6 +14,7 @@ use Cake\Network\Http\Client;
 use Cake\View\Helper\RssHelper;
 use LearnositySdk\Request\Init;
 use LearnositySdk\Request\DataApi;
+use Cake\Mailer\Email as m;
 
 /**
  * Users Controller
@@ -24,7 +25,7 @@ class PagesController extends AppController {
 
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['register','resetpass']);
+        $this->Auth->allow(['register','resetpass','sendmessage']);
         $this->UsersTable = TableRegistry::get('Career3D.Users');
         $this->ProfilesTable = TableRegistry::get('Career3D.Profiles');
         $this->ProvincesTable = TableRegistry::get('Career3D.Provinces');
@@ -83,10 +84,10 @@ class PagesController extends AppController {
     public function resetpass() {
         if ($this->request->is('ajax')) {
             $user = $this->UsersTable->get($this->request->data('user_id'));
-            if ($this->request->is('post')) {
-                $user = $this->UsersTable->patchEntity($user, $this->request->data);   
+            if ($this->request->is('post')) {                  
                 $user->password = $this->request->data('password');
-                if (empty($user->errors())) {
+                $check = $this->UsersTable->patchEntity($user, $this->request->data); 
+                if (empty($check->errors())) {
                     $this->UsersTable->save($user);
                     $status = '200';
                     $message = 'Password has been updated successfully, please login with new password.';
@@ -111,5 +112,33 @@ class PagesController extends AppController {
             $this->viewBuilder()->layout(false);
         }
     }
+    
+    public function sendmessage() {  
+        if ($this->request->is('ajax')) {
+            //var_dump($this->request->data);
+            if ($this->request->is('post')) {      
+                $template = 'Career3D.admin_message';
+                $transport = 'default';
+                $subj  =  $this->request->data('name'). ' '.$this->request->data('email');
+                $phone =  $this->request->data('phone');
+                $msg   =  $this->request->data('message');
+                $to    =  'reggiestain@gmail.com';
+                $email = new m();
+                        $email->viewVars(['msg' => $msg,'phone'=>$phone]);
+                        $email->transport($transport);
+                        $email->template($template, $template)->emailFormat('html')
+                                ->from(['info@siyanontech.co.za' => 'siyanontech.co.za'])->to($to)
+                                ->subject($subj)->send();
+                $message = 'Your email has been recieved, well will get back to you soon.';
+                
+                return; '200';
+            }else{
+                return 'error';
+                
+            }                      
+           }
+          $this->viewBuilder()->layout(false);
+          }
+    
 }
                 

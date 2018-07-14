@@ -37,7 +37,7 @@ $cakeDescription = '';
         <?php echo $this->Html->css('Career3D.style.css') ;?>
         <?php echo $this->Html->css('Career3D.custom.css') ;?>
         <?php echo $this->Html->css('Career3D.menu.css') ;?>
-        <?php echo $this->Html->css('Career3D.overly.css') ;?>
+        <?php echo $this->Html->css('Career3D.overlay.css') ;?>
         <?php echo $this->Html->css('Career3D.google-font-1.css') ;?>
         <?php echo $this->Html->css('Career3D.google-font-2.css') ;?>
         <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
@@ -72,11 +72,12 @@ $cakeDescription = '';
            // });
             //ath.clearSession();      // reset the user session
         </script>-->
-        <?php echo $this->Html->script('Career3D.bootstrap-datepicker.min');?> 
-        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <?php echo $this->Html->script('Career3D.gmaps') ;?>
-        <?php echo $this->Html->script('Career3D.smoothscroll');?>
         <?php echo $this->Html->script('Career3D.bootstrap.min');?>
+        <?php echo $this->Html->script('Career3D.bootstrap-datepicker.min');?> 
+        <!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+        <?php //echo $this->Html->script('Career3D.gmaps') ;?>
+        <?php //echo $this->Html->script('Career3D.smoothscroll');?>
+        
         <?php //echo $this->Html->script('Career3D.custom');?>        
         <?php echo $this->Html->script('Career3D.custom-2');?>       
         

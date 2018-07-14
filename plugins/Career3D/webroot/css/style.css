@@ -46,7 +46,7 @@ body{
     text-transform: uppercase;
 }
 .item-right a i {
-    background: rgba(0, 0, 0, 0) url("../images/img-sprite.png") no-repeat scroll -8px -9px;
+    background: rgba(0, 0, 0, 0) ;//url("../img/img-sprite.png") no-repeat scroll -8px -9px;
     display: inline-block;
     height: 40px;
     margin: 0 8px 0 0;

@@ -156,7 +156,7 @@ class AppController extends BaseController {
                         $email->viewVars(['id' => $pId, 'name' => $name, 'hash' => $to]);
                         $email->transport($transport);
                         $email->template($template, $template)->emailFormat('html')
-                                ->from(['info@carrer3d.co.za' => 'carrer3d.co.za'])->to($to)
+                                ->from(['info@siyanontech.co.za' => 'siyanontech.co.za'])->to($to)
                                 ->subject($subj)->send();
                     }
 

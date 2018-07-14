@@ -15,7 +15,7 @@
  */
 ?>
 
-<p><strong>Welcome to Carrer3d</strong></p> 
 
-<p><a href="http://siyanontech.co.za/career3-d/users/resetlink/<?php echo $id;?>/<?php echo $hash;?>">Please open this link to reset your password</a></p>
+<p><strong><?php echo $phone;?></strong></p>
+<p><?php echo $msg;?></p>
 

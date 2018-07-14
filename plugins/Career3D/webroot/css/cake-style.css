@@ -136,12 +136,6 @@ p.error {
     background-color: #547A91;
 }
 
-.navbar-header{
-    background-image: url(../img/safer_schools_logo.jpg);  
-    background-attachment: fixed;
-
-}
-
 .lmodal {
     display:    none;
     position:   fixed;

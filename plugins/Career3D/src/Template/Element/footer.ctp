@@ -3,7 +3,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-6 footer-para">
-                            <p>&copy;freshDesignweb.com All right reserved</p>
+                            <p>&copy;siyanontech.co.za All right reserved</p>
                         </div>
 
                         <div class="col-xs-6 text-right">

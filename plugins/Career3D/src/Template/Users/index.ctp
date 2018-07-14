@@ -20,6 +20,11 @@ use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
 use Cake\Routing\Router;
 ?>
+<style>
+ span{
+   font-size: 1em !important;  
+ }   
+</style>
 
 <?php echo $this->element('Career3D.header'); ?>
 
@@ -42,9 +47,11 @@ use Cake\Routing\Router;
                             <div id="owl-demo1" class="owl-carousel">
                                 <div class="item-bottom">
                                     <div class="item-right">
-                                        <h1>best mobIle app</h1>
-                                        <span>Download this cool app for free</span>
-                                        <p>velit ullamcorper, lobortis vel, vel ad duis lorem nisl. Iriure dolore et eros aliquip aliquip zzril vel praesent ex feugiat dolor nostrud eu vel delenit. Duis eu qui iusto, commodo consequat, consequat laoreet augue, duis at adipiscing ullamcorper facilisis dolor te odio. </p>
+                                        <h1>Successful people have goals</h1>
+                                        <span>First, decide what you want to do, accomplish, or be in life.</span>
+                                        <span>Secondly, split your larger goal into smaller and more achievable goals or targets that you have to achieve</span>
+                                        <span>Finally, you will want to formulate and develop a proper plan for your goal</span>
+                                        
                                         <a href="#"><i> </i>Download </a>
                                     </div>
                                 </div>														
@@ -52,10 +59,11 @@ use Cake\Routing\Router;
                         </div>
                         <div class="col-md-6 banner-side">
                             <div class="col-md-6 side">
-                                <img class="img-responsive" src="web/images/ba.jpg" alt="">
+                               
+                              
                             </div>
                             <div class="col-md-6 side">
-                                <img class="img-responsive" src="web/images/ba1.jpg" alt="">
+                                
                             </div>
                             <div class="clearfix"> </div>
                         </div>
@@ -117,23 +125,23 @@ use Cake\Routing\Router;
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
                                 <?php echo $this->Html->image('Career3D.img/student-banner-2.jpg', ['class' => 'img-responsive center-block', 'style' => 'height:550px']); ?>
-                                <div class="carousel-caption">                        
-                                    <h3>First slide label UIUU</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="carousel-caption">                   <p>Earn a Promotion</p>
+                                    <h3>It is always a good feeling to get promoted, and a promotion involves careful planning, commitment, and execution on your part as an employee.</h3>      
+
                                 </div>
                             </div>
                             <div class="item">
                                 <?php echo $this->Html->image('Career3D.img/student-6.jpg', ['class' => 'img-responsive center-block']); ?>
                                 <div class="carousel-caption">
-                                    <h3>First slide label</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p>Increase Performance Metrics</p>
+                                    <h3>Certain industries and companies use performance metrics when they evaluate an employee’s performance, productivity, and effectiveness levels.</h3>
                                 </div>
                             </div>
                             <div class="item">
                                 <?php echo $this->Html->image('Career3D.img/student-banner.jpg', ['class' => 'img-responsive center-block', 'style' => 'height:500px']); ?>
                                 <div class="carousel-caption">
-                                    <h3>First slide label</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p>Start a Business</p>
+                                    <h3>A lot of people associate success with branching out on their own, and a viable career goal, in that case, can be to start your own business or open your own practice to become your own boss.</h3>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +195,9 @@ use Cake\Routing\Router;
                         </div>
 
                         <h3>Academics</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+                        <p>An academic collaboration programme hosted by Unisa’s Department of Marketing and Retail Management was held on 15 and 16 August 2017 in Pretoria. The conference gathered together representatives from 12 South African tertiary institutions, and one from Uganda. Also attending were representatives from Services Seta, various marketing councils, and academic research organisations.
+
+</p>
                     </div>
                 </div>
             </div>
@@ -204,7 +214,11 @@ use Cake\Routing\Router;
                         </div>
 
                         <h3>Career Guidance</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+                        <p>One of the most daunting choices you’ll face in your last two or three years of school is deciding which career you’d like to pursue, and which tertiary qualifications will help you meet your goal.
+
+This is about finding the place where your passions, your abilities and the needs of the job market meet up.
+
+Here a few tips about how you can choose the right career path: Make a list of your strengths and interests. A good place to start is by taking a look at yourself...</p>
 
                     </div>
                 </div>
@@ -221,9 +235,9 @@ use Cake\Routing\Router;
                             <a href="<?php echo \Cake\Routing\Router::Url('/career-3d/users/assessment'); ?>"><h1>M</h1></a>
                         </div>
 
-                        <h3>Mentorship Program</h3>
+                        <h3>Mentorship Programs</h3>
 
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+                        <p>A good mentor is as valuable for a start-up as a good coach is for a rising sports star. They want you to succeed, are quick with advice, honest in their critiques and generous with their networks.A mentor that’s very experienced can direct the mentee in terms of things they need to think about, who they need to connect with and give them a heads up about questions they wouldn’t even think to ask. Here’s how to link up with a mentor who’s a match for you</p>
                     </div>
                 </div>
             </div>
@@ -400,21 +414,22 @@ use Cake\Routing\Router;
                     <h3>contact information</h3>
                     <div class="info-detail">
                         <ul><li><i class="fa fa-calendar"></i><span>Monday - Friday:</span> 9:30 AM to 6:30 PM</li></ul>
-                        <ul><li><i class="fa fa-map-marker"></i><span>Address:</span> 123 Some Street , California, US, CP 123</li></ul>
-                        <ul><li><i class="fa fa-phone"></i><span>Phone:</span> (01) 999-1235</li></ul>
+                        <ul><li><i class="fa fa-map-marker"></i><span>Address:</span> 93 Hornbill Avenue, Rooihuiskraal Centurion, 0157</li></ul>
+                        <ul><li><i class="fa fa-phone"></i><span>Phone:</span> 078-4450-830</li></ul>
                         <ul><li><i class="fa fa-fax"></i><span>Fax:</span> (01) 999-1234</li></ul>
-                        <ul><li><i class="fa fa-envelope"></i><span>Email:</span> info@domain.com</li></ul>
+                        <ul><li><i class="fa fa-envelope"></i><span>Email:</span> info@siyanontech.co.za</li></ul>
                     </div>
                 </div>
 
 
                 <div class="col-md-6 col-md-offset-1 contact-form">
+                    <div class="m-alert"></div>
                     <h3>leave us a message</h3>
-
-                    <form class="form">
-                        <input class="name" type="text" placeholder="Name">
-                        <input class="email" type="email" placeholder="Email">
-                        <input class="phone" type="text" placeholder="Phone No:">
+                    <?php echo $this->Form->create(null, ['id'=>'send-m','class' => 'form', 'url' => ['controller' => 'pages', 'action' => 'sendmessage']]); ?>
+                    <!--<form id="send-msg" class="form">-->
+                        <input class="name" type="text" placeholder="Name" name="name">
+                        <input class="email" type="email" placeholder="Email" name="email">
+                        <input class="phone" type="text" placeholder="Phone No:" name="phone">
                         <textarea class="message" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
                         <input class="submit-btn" type="submit" value="SUBMIT">
                     </form>
@@ -499,8 +514,8 @@ use Cake\Routing\Router;
                     </div>    
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="bottom-text" class="btn btn-success">Submit</button>  
-                    <button type="button" id="bottom-text" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit"  class="btn btn-success">Submit</button>  
+                    <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
             <?php echo $this->Form->end(); ?>
@@ -527,16 +542,16 @@ use Cake\Routing\Router;
                 <div class="row">
                     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6">
                         <label for="firstname" class="form-label">Email</label>
-                        <?php echo $this->Form->input('email', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'email', 'label' => false, 'class' => 'form-control', 'required' => false, 'error' => true]); ?>                               
+                        <?php echo $this->Form->input('email', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'email', 'label' => false,'id'=>'r-email', 'class' => 'form-control', 'required' => false, 'error' => true]); ?>                               
                     </div>
                     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6">
                         <label for="surname" class="form-label">Password</label>
-                        <?php echo $this->Form->input('password', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'password', 'label' => false, 'class' => 'form-control', 'required' => false, 'error' => true]); ?>                   
+                        <?php echo $this->Form->input('password', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'password', 'label' => false, 'id'=>'r-pass','class' => 'form-control', 'required' => false, 'error' => true]); ?>                   
                     </div>    
                 </div>                        
                 <div class="modal-footer">
                     <!--<button type="button" id="bottom-text" class="btn btn-link">Reset Password</button>-->
-                    <button type="submit" id="bottom-text" class="btn btn-success login-status">Login</button> 
+                    <button type="submit"  class="btn btn-success login-status">Login</button> 
 
                 </div>
             </div>
@@ -560,11 +575,11 @@ use Cake\Routing\Router;
                 <div class="row">
                     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6">
                         <label for="p-email" class="form-label">Email Address</label>
-                        <?php echo $this->Form->input('email', ['placeholder' => 'Enter your registered email address', 'type' => 'email', 'label' => false, 'class' => 'form-control', 'required' => true, 'error' => true]); ?>                               
+                        <?php echo $this->Form->input('email', ['placeholder' => 'Enter your registered email address', 'type' => 'email', 'label' => false,'id'=>'l-email','class' => 'form-control', 'required' => true, 'error' => true]); ?>                               
                     </div>  
                 </div>                        
                 <div class="modal-footer">
-                    <button type="submit" id="bottom-text" class="btn btn-success reset-status">Submit</button>                    
+                    <button type="submit"  class="btn btn-success reset-status">Submit</button>                    
                 </div>
             </div>
         </div>
@@ -576,6 +591,33 @@ use Cake\Routing\Router;
 
 <script>
     $(document).ready(function () {
+        $('#send-m').submit(function (event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+            var url = $(this).attr("action");
+            $.ajax({
+                url: url,
+                type: "POST",
+                asyn: false,
+                data: formData,
+                beforeSend: function () {
+                  $(".reset-status").html("<p>sending....</p><i class='fa fa-envelope-o fa-spin' style='font-size:24px'></i>"); 
+                },
+                success: function (data, textStatus, jqXHR)
+                {   
+                    alert(data);
+                   if (data === '200') {
+                        $(".m-alert").html('<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> Thanks, will get back to you soon.</div>');
+                    } else {
+                        $(".m-alert").html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Error occured,please try again.</div>');
+                    } 
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        });
+        
         $(".register").click(function (event) {
             event.preventDefault();
             $("#regModal").modal();
@@ -591,7 +633,7 @@ use Cake\Routing\Router;
         $('#reg-form').submit(function (event) {
             event.preventDefault();
             var formData = $("#reg-form").serialize();
-            var url = $("#reg-form").attr("action");
+            var url = "<?php echo Router::url('/career3-d/pages/register');?>";
             $.ajax({
                 url: url,
                 type: "POST",
@@ -629,7 +671,7 @@ use Cake\Routing\Router;
                 {
                     if (data === '200') {
                         $("#loginModal").modal('hide');
-                        window.location.href = "<?php echo Router::url('career3-d/users/dashboard'); ?>";
+                        window.location.href = "<?php echo Router::url('/career3-d/users/dashboard'); ?>";
                     } else {
                         $(".log-alert").html(data);
                     }
@@ -665,13 +707,10 @@ use Cake\Routing\Router;
                 }
             });
         });
+        
+        
 
     });
-
-
-
-
-
 
 </script>
 
