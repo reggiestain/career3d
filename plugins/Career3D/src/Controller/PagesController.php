@@ -113,9 +113,8 @@ class PagesController extends AppController {
         }
     }
     
-    public function sendmessage() {  
+    public function sendmessage() { 
         if ($this->request->is('ajax')) {
-            //var_dump($this->request->data);
             if ($this->request->is('post')) {      
                 $template = 'Career3D.admin_message';
                 $transport = 'default';
@@ -123,21 +122,24 @@ class PagesController extends AppController {
                 $phone =  $this->request->data('phone');
                 $msg   =  $this->request->data('message');
                 $to    =  'reggiestain@gmail.com';
+                               
                 $email = new m();
+                
                         $email->viewVars(['msg' => $msg,'phone'=>$phone]);
                         $email->transport($transport);
                         $email->template($template, $template)->emailFormat('html')
                                 ->from(['info@siyanontech.co.za' => 'siyanontech.co.za'])->to($to)
                                 ->subject($subj)->send();
                 $message = 'Your email has been recieved, well will get back to you soon.';
-                
-                return; '200';
-            }else{
-                return 'error';
-                
-            }                      
-           }
-          $this->viewBuilder()->layout(false);
+                $status = '200';
+            }else{                
+                $message = 'An error occured, please try again.';
+                $status = 'error';
+            }     
+                 $this->set("status", $status);
+                 $this->set("message", $message);
+                 $this->viewBuilder()->layout(false);
+           }      
           }
     
 }

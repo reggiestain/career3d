@@ -605,12 +605,7 @@ Here a few tips about how you can choose the right career path: Make a list of y
                 },
                 success: function (data, textStatus, jqXHR)
                 {   
-                    alert(data);
-                   if (data === '200') {
-                        $(".m-alert").html('<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> Thanks, will get back to you soon.</div>');
-                    } else {
-                        $(".m-alert").html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Error occured,please try again.</div>');
-                    } 
+                 $(".m-alert").html(data);                   
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);
