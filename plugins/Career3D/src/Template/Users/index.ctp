@@ -52,7 +52,7 @@ use Cake\Routing\Router;
                                         <span>Secondly, split your larger goal into smaller and more achievable goals or targets that you have to achieve</span>
                                         <span>Finally, you will want to formulate and develop a proper plan for your goal</span>
                                         
-                                        <a href="#"><i> </i>Download </a>
+                                        <!--<a href="#"><i> </i>Download </a>-->
                                     </div>
                                 </div>														
                             </div>

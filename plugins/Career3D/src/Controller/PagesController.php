@@ -130,7 +130,7 @@ class PagesController extends AppController {
                         $email->template($template, $template)->emailFormat('html')
                                 ->from(['info@siyanontech.co.za' => 'siyanontech.co.za'])->to($to)
                                 ->subject($subj)->send();
-                $message = 'Your email has been recieved, well will get back to you soon.';
+                $message = 'Thank you for the message, we will get back to you soon.';
                 $status = '200';
             }else{                
                 $message = 'An error occured, please try again.';
