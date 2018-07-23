@@ -22,6 +22,7 @@ use Cake\ORM\Query;
 use Cake\Validation\Validator;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Rule\IsUnique;
+use Cake\ElasticSearch\Type;
 
 class UsersTable extends Table {
 

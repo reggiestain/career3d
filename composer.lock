@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9326840227f652bc96f07916ce73b4b7",
-    "content-hash": "44b3a36f15315a669fba6c06eb15b8b1",
+    "hash": "fc757354c5f979664374c38213af74dc",
+    "content-hash": "ff02ae562d14c0224f78c88868a5de39",
     "packages": [
         {
             "name": "akkaweb/cakephp-facebook",
@@ -304,6 +304,53 @@
                 "time"
             ],
             "time": "2018-07-11 18:51:56"
+        },
+        {
+            "name": "cakephp/elastic-search",
+            "version": "1.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cakephp/elastic-search.git",
+                "reference": "fbc4df5a3106bcc727703b66d5c442fbcadcaa48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cakephp/elastic-search/zipball/fbc4df5a3106bcc727703b66d5c442fbcadcaa48",
+                "reference": "fbc4df5a3106bcc727703b66d5c442fbcadcaa48",
+                "shasum": ""
+            },
+            "require": {
+                "ruflin/elastica": "~3.1"
+            },
+            "require-dev": {
+                "cakephp/cakephp": "~3.4.0",
+                "cakephp/cakephp-codesniffer": "~2.1",
+                "phpunit/phpunit": "^5.7|^6.0",
+                "psr/log": "~1.0"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Cake\\ElasticSearch\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CakePHP Community",
+                    "homepage": "https://github.com/cakephp/elastic-search/graphs/contributors"
+                }
+            ],
+            "description": "An Elastic Search datasource and data mapper for CakePHP 3.0",
+            "homepage": "https://github.com/cakephp/elastic-search",
+            "keywords": [
+                "cakephp",
+                "elasticsearch"
+            ],
+            "time": "2018-05-23 20:57:07"
         },
         {
             "name": "cakephp/migrations",
@@ -939,6 +986,63 @@
             "time": "2017-06-05 13:30:19"
         },
         {
+            "name": "ruflin/elastica",
+            "version": "3.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ruflin/Elastica.git",
+                "reference": "02bf2fbb8ad6b679869af145eed89436a1c50229"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/02bf2fbb8ad6b679869af145eed89436a1c50229",
+                "reference": "02bf2fbb8ad6b679869af145eed89436a1c50229",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "~3.0",
+                "guzzlehttp/guzzle": "~6.0"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Allow using IAM authentication with Amazon ElasticSearch Service",
+                "egeloen/http-adapter": "Allow using httpadapter transport",
+                "guzzlehttp/guzzle": "Allow using guzzle 6 as the http transport (Requires php 5.5)",
+                "monolog/monolog": "Logging request"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Elastica\\": "lib/Elastica/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Ruflin",
+                    "homepage": "http://ruflin.com/"
+                }
+            ],
+            "description": "Elasticsearch Client",
+            "homepage": "http://elastica.io/",
+            "keywords": [
+                "client",
+                "search"
+            ],
+            "time": "2016-09-23 10:24:25"
+        },
+        {
             "name": "symfony/config",
             "version": "v3.4.12",
             "source": {
@@ -1352,16 +1456,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.8.1",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "63d920d1c9ebc009d860c3666593a66298727dd6"
+                "reference": "273c18bf6aaab20be9667a3aa4e7702e1e4e7ced"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/63d920d1c9ebc009d860c3666593a66298727dd6",
-                "reference": "63d920d1c9ebc009d860c3666593a66298727dd6",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/273c18bf6aaab20be9667a3aa4e7702e1e4e7ced",
+                "reference": "273c18bf6aaab20be9667a3aa4e7702e1e4e7ced",
                 "shasum": ""
             },
             "require": {
@@ -1411,7 +1515,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2018-07-09 21:17:27"
+            "time": "2018-07-19 18:38:31"
         }
     ],
     "packages-dev": [
@@ -2018,16 +2122,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "35b8caf75e791ba1b2d24fec1552168d72692b12"
+                "reference": "bd088dc940a418f09cda079a9b5c7c478890fb8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/35b8caf75e791ba1b2d24fec1552168d72692b12",
-                "reference": "35b8caf75e791ba1b2d24fec1552168d72692b12",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bd088dc940a418f09cda079a9b5c7c478890fb8d",
+                "reference": "bd088dc940a418f09cda079a9b5c7c478890fb8d",
                 "shasum": ""
             },
             "require": {
@@ -2065,7 +2169,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2018-06-03 11:33:10"
+            "time": "2018-07-15 17:25:16"
         },
         {
             "name": "psy/psysh",
@@ -2452,6 +2556,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "akkaweb/cakephp-facebook": 20,
+        "cakephp/elastic-search": 0,
         "psy/psysh": 0
     },
     "prefer-stable": false,

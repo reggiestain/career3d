@@ -16,6 +16,7 @@ use LearnositySdk\Request\Init;
 use LearnositySdk\Request\DataApi;
 use Facebook\Facebook;
 
+
 /**
  * Users Controller
  *
@@ -45,7 +46,7 @@ class UsersController extends AppController {
         $this->TertiariesTable = TableRegistry::get('Career3D.tertiaries');
         $this->WorkExpsTable = TableRegistry::get('Career3D.work_experiences');
         $this->CertificatesTable = TableRegistry::get('Career3D.certificates');
-        $this->ProfileCareersTable = TableRegistry::get('Career3D.Profile_Careers');       
+        $this->ProfileCareersTable = TableRegistry::get('Career3D.Profile_Careers');   
        
 
         $this->viewBuilder()->layout('Career3D.default');
