@@ -58,7 +58,8 @@ class AppController extends BaseController {
                 'Form' => [
                     'fields' => ['username' => 'email', 'password' => 'password']
                 ]
-            ],
+            ]
+            /*,
             'loginRedirect' => [
                 'plugin' => 'Career3D', 'controller' => 'Users',
                 'action' => 'dashboard'
@@ -67,6 +68,8 @@ class AppController extends BaseController {
                 'plugin' => 'Career3D', 'controller' => 'Users',
                 'action' => 'index'
             ]
+             * 
+             */
         ]);
     }
 

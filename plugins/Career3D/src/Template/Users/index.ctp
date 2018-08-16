@@ -52,7 +52,7 @@ use Cake\Routing\Router;
                                         <span>Secondly, split your larger goal into smaller and more achievable goals or targets that you have to achieve</span>
                                         <span>Finally, you will want to formulate and develop a proper plan for your goal</span>
                                         
-                                        <a href="#"><i> </i>Download </a>
+                                        <!--<a href="#"><i> </i>Download </a>-->
                                     </div>
                                 </div>														
                             </div>
@@ -235,7 +235,7 @@ Here a few tips about how you can choose the right career path: Make a list of y
                             <a href="<?php echo \Cake\Routing\Router::Url('/career-3d/users/assessment'); ?>"><h1>M</h1></a>
                         </div>
 
-                        <h3>Mentorship Programs</h3>
+                        <h3>Mentorship Programmes</h3>
 
                         <p>A good mentor is as valuable for a start-up as a good coach is for a rising sports star. They want you to succeed, are quick with advice, honest in their critiques and generous with their networks.A mentor that’s very experienced can direct the mentee in terms of things they need to think about, who they need to connect with and give them a heads up about questions they wouldn’t even think to ask. Here’s how to link up with a mentor who’s a match for you</p>
                     </div>

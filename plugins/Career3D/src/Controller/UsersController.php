@@ -126,7 +126,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             $this->Auth->setUser($user);
-            switch ($this->Auth->user('level_id')) {
+            switch ($this->Auth->user('user_group_id')) {
                 case 1:
                     if ($this->Auth->user('status') === 'In-ative') {
                         $this->Flash->error(__('This account has been blocked, please contact Admin for assistance.'));
@@ -143,6 +143,14 @@ class UsersController extends AppController {
                         return $this->redirect(['controller' => 'Mentors', 'action' => 'dashboard']);
                     }
                     break;
+                case 3:
+                    if ($this->Auth->user('status') === 'In-ative') {
+                        $this->Flash->error(__('This account has been blocked, please contact Admin for assistance.'));
+                        return $this->redirect(['action' => 'dashboard']);
+                    } else {
+                        return $this->redirect(['controller' => 'Admin', 'action' => 'dashboard']);
+                    }
+                    break;    
                 default:
                     $this->Flash->error(__("Invalid email or password. Make sure your email and password is correct and then you try again."));
                     return $this->redirect(['action' => 'index']);

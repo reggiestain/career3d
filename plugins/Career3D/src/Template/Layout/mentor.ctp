@@ -39,8 +39,16 @@ $cakeDescription = '';
         <?php echo $this->Html->css('Career3D.mentor/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css');?>        
     </head>
     <body class="skin-blue">  
+    <div class="wrapper">     
     <?php echo $this->fetch('content');?>
         <!-- Include JS files --> 
+    </div><!-- ./wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 2.0
+        </div>
+        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+    </footer>
     <?php echo $this->Html->script('Career3D.mentor/jQuery/jQuery-2.1.3.min');?>
         <!-- jQuery UI 1.11.2 -->
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
@@ -77,9 +85,11 @@ $cakeDescription = '';
     <?php echo $this->Html->script('Career3D.mentor/pages/dashboard');?>    
     <!-- AdminLTE for demo purposes -->
     <?php echo $this->Html->script('Career3D.mentor/demo');?>
+    <?php //echo $this->Html->css('Career3D.summernote.css') ;?>
     </body>
 </html>
 <script>
+    var $ = jQuery;
     $(document).ready(function () {
         $(".register").click(function () {
             $("#regModal").modal();
