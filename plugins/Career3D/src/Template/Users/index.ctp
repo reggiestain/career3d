@@ -594,7 +594,7 @@ use Cake\Routing\Router;
 </div>   
 <!-- Register Modal -->
 <div id="resetModal" class="modal fade" role="dialog">
-    <div class="modal-dialog" style="width:100% !important">
+    <div class="modal-dialog">
         <!-- Modal content-->               
         <?php echo $this->Form->create($users, ['id' => 'reset-form', 'url' => ['controller' => 'users', 'action' => 'resetpass']]); ?>
         <div class="modal-content">
@@ -623,7 +623,7 @@ use Cake\Routing\Router;
 <div id="careerModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->               
-        <?php echo $this->Form->create($users, ['id' => 'res-form', 'url' => ['controller' => 'users', 'action' => 'resetpass']]); ?>
+        <?php //echo $this->Form->create($users, ['id' => 'res-form', 'url' => ['controller' => 'users', 'action' => 'resetpass']]); ?>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>

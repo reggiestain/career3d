@@ -23,9 +23,9 @@ use Cake\Routing\Router;
 ?>
 <?php
 
-if($status === '200'){
+if($status == '200'){
    echo "<div class='alert alert-success'><strong>warning! </strong>".$message."</div>"; 
-}else if($status === 'error'){  
+}else if($status == 'error'){  
    echo "<div class='alert alert-warning'><strong>warning! </strong>".$message."</div>"; 
 }
 ?>

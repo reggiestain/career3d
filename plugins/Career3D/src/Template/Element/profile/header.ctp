@@ -49,6 +49,52 @@
         border-bottom-left-radius: 4px;
     }
 
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding-top: 16px !important;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Dropdown button on hover & focus */
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        width:500px;
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;    
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #ddd}
+
+    /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+    .show {display:block;}
+
     @media screen and (min-width: 768px) {
         #adv-search {          
             width: 400px;
@@ -74,8 +120,8 @@
                     <a class="navbar-brand" href="./ORqmj" style="margin-right:-8px; margin-top:-5px;">
                         <img alt="Brand" src="https://lut.im/7trApsDX08/GeilMRp1FIm4f2p7.png" width="30px" height="30px">
                     </a>
-                    <a class="navbar-brand" href="./ORqmj">Project*</a>
-                    <i class="brand_network"><small><small>diaspora* Network</small></small></i>
+                    <a class="navbar-brand" href="./ORqmj">Career3d</a>
+                    <i class="brand_network"><small><small>African Guidance</small></small></i>
                 </div>
 
                 <div class="navbar-collapse collapse">
@@ -90,7 +136,7 @@
                             </div>
                         </form>-->
 
-                        <div class="input-group" id="adv-search" style="margin-top:10px;">
+                        <!--<div class="input-group" id="adv-search" style="margin-top:10px;">
                             <input type="text" class="form-control" placeholder="Search" />
                             <div class="input-group-btn">
                                 <div class="btn-group" role="group">
@@ -123,8 +169,27 @@
                                     <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                 </div>
                             </div>
-                        </div>
-
+                        </div>-->
+                        <form class="navbar-form" role="search">
+                            <div class="dropdown">
+                                <input type="text" id="myInput" class="form-control" onkeydown="filterFunction()" placeholder="Search..." />
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                <div id="myDropdown" class="dropdown-content">                                   
+                                 <a href="#"><strong><i class="fa fa-group" aria-hidden="true"></i>  Students </strong></a>
+                                 <a href="#"><strong><i class="fa fa-slideshare" aria-hidden="true"></i>  Mentors</strong></a>
+                                 <a href="#"><strong><i class="fa fa-thumbs-up" aria-hidden="true"></i>  Recruiters</strong></a>
+                                 <a href="#"><strong><i class="fa fa-graduation-cap" aria-hidden="true"></i>  Jobs</strong></a>
+                                </div>
+                                <div id="secDropdown" class="dropdown-content">
+                                <?php 
+                                foreach ($profileSearch as $member) {
+                                 echo '<a href="#"><strong>'.$member->name.'</strong></a>';
+                                
+                                 }
+                                ?>       
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <ul class="nav nav-tabs navbar-right">
                         <!--<li><a href="./ORqmj">Stream</a></li>
@@ -260,3 +325,48 @@
         </div>
     </div>
 </div>
+
+<script>
+  
+       
+    $(document).on('click','#myInput',function(){
+        $("#myDropdown").toggle();
+        $("#secDropdown").hide();
+    });
+    
+    
+    
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+    function filterFunction() {
+         $("#myDropdown").hide();
+         $("#secDropdown").toggle();
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("secDropdown");
+        a = div.getElementsByTagName("a");
+        
+        for (i = 0; i < a.length; i++) {
+            if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+    }
+
+ 
+
+</script>    

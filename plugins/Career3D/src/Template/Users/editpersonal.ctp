@@ -94,4 +94,18 @@ if($status ==='500'){
         <button type="button" id="bottom-text" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
 </div>
-<?php } ?>                 
+<?php } ?>      
+
+
+<script>
+$(function() {
+    $('.multiselect-ui').multiselect({
+        includeSelectAllOption: true
+    });
+}); 
+
+$(document).ready(function(){
+  $('#b-date').datepicker();
+  
+});
+</script>

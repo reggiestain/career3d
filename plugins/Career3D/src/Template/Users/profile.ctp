@@ -68,8 +68,8 @@ use Cake\Routing\Router;
         <div class="col-md-6">
             <div class="panel panel-white">
                 <div class="panel-body">
-                    <span>
-                        <h1 class="panel-title pull-left" style="font-size:25px;"><small><?php echo $profile->name;?> <?php echo $profile->email;?></small> <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="John Doe is sharing with you"></i></h1>
+                   <!-- <span>
+                        <h1 class="panel-title pull-left" style="font-size:25px;"><strong><?php echo $profile->name;?> <?php echo $profile->email;?></strong> <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="John Doe is sharing with you"></i></h1>
                         <div class="dropdown pull-right">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Friends
@@ -86,70 +86,76 @@ use Cake\Routing\Router;
                     </span>
                     <br><br>
                     <i class="fa fa-tags" aria-hidden="true"></i> <a href="/tags/diaspora" class="tag">#diaspora</a> <a href="/tags/hashtag" class="tag">#hashtag</a> <a href="/tags/caturday" class="tag">#caturday</a>
-                    <br><br><hr>
+                    <br><br>
+                  
+                   <hr> -->
                     <span class="pull-left">
                         <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-files-o" aria-hidden="true"></i> Posts</a>
-                        <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> Photos <span class="badge">42</span></a>
-                        <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Contacts <span class="badge">42</span></a>
+                        <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> Photos <span class="badge">0</span></a>
+                        <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Contacts <span class="badge">0</span></a>
                     </span>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-success">
                 <div class="panel-heading">General Information</div>
                 <div class="panel-body">                    
                     <div class="row custom-row">                        
                         <div class="col-md-12">                             
                             <div class="high-alert"></div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Firstname</small></div>
+                                <div class="col-sm-2"><strong>Firstname</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $profile->firstname;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Surname</small></div>
+                                <div class="col-sm-2"><strong>Surname</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $profile->surname;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Mobile</small></div>
+                                <div class="col-sm-2"><strong>Mobile</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $profile->mobile;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Email</small></div>
+                                <div class="col-sm-2"><strong>Email</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $profile->email;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Gender</small></div>
+                                <div class="col-sm-2"><strong>Gender</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $profile->gender;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Birth Date</small></div>
+                                <div class="col-sm-2"><strong>Birth Date</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $profile->birth_date;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Career</small></div>
+                                <div class="col-sm-2"><strong>Career</strong></div>
                                 <div class="col-sm-10">
-                                <?php echo $profile->careers[0]->name;?>  
+                                <?php 
+                                if(!empty($profile->careers)){
+                                   echo $profile->careers[0]->name;
+                                }
+                                ?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Province</small></div>
+                                <div class="col-sm-2"><strong>Province</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $profile->province->name;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Drivers License</small></div>
+                                <div class="col-sm-2"><strong>Drivers License</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $profile->drivers_lic;?>  
                                 </div>
@@ -163,37 +169,39 @@ use Cake\Routing\Router;
                             </div>
                         </div> 
                     </div>
+                    <br>
                     <?php if(!$address->isEmpty()){?>
                     <?php foreach ($address as $address):?>
+                    
                     <div class="row custom-row">                        
                         <div class="col-md-12">                             
                             <div class="high-alert"></div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Address</small></div>
+                                <div class="col-sm-2"><strong>Address</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $address->line_1;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Street</small></div>
+                                <div class="col-sm-2"><strong>Street</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $address->line_2;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>City</small></div>
+                                <div class="col-sm-2"><strong>City</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $address->city;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Province</small></div>
+                                <div class="col-sm-2"><strong>Province</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $address->province->name;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Post Code</small></div>
+                                <div class="col-sm-2"><strong>Post Code</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $address->post_code;?>  
                                 </div>
@@ -207,8 +215,10 @@ use Cake\Routing\Router;
                             </div>
                         </div> 
                     </div> 
+                    <br>
                     <?php endforeach;?>
-                    <?php }else{ ?>
+                    
+                    <?php }else{ ?>                   
                     <div class="row custom-row">
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <p class="h5"><a href="#" class="add-address"><span class="fa fa-plus"></span> Add address</a></p>                        
@@ -217,19 +227,19 @@ use Cake\Routing\Router;
                             <div class="address-alert"></div>
                             <?php echo $this->Form->create(null,['id'=>'address-form','url'=>['controller' => 'users', 'action' =>'saveaddress']]);?>                                        
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Address</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Address</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="line_1" placeholder="Address" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Street</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Street</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" placeholder="Street" name="line_2" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>City</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>City</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" placeholder="City" name="city" class="form-control">
                                 </div>
@@ -237,14 +247,14 @@ use Cake\Routing\Router;
 
                             <!-- Text input-->
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Province</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Province</strong></label>
                                 <div class="col-sm-4">
                                   <?php           
                                  echo $this->Form->select('province_id',$province, ['empty' => '--Choose One--','class'=>'form-control','label'=>false,'required'=>false, 'error' => true]);
                                  ?>
                                 </div>
 
-                                <label class="col-sm-2 control-label" for="textinput"><small>Postcode</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Postcode</strong></label>
                                 <div class="col-sm-4">
                                     <input type="text" placeholder="Post Code"name="post_code" class="form-control">
                                 </div>
@@ -263,7 +273,7 @@ use Cake\Routing\Router;
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-success">
                 <div class="panel-heading">High School Education</div>
                 <div class="panel-body">
                  <?php if(!$highschool->isEmpty()){?> 
@@ -272,13 +282,13 @@ use Cake\Routing\Router;
                         <div class="col-md-12">                             
                             <div class="high-alert"></div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>School</small></div>
+                                <div class="col-sm-2"><strong>School</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $highschool->school;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Course</small></div>
+                                <div class="col-sm-2"><strong>Course</strong></div>
                                 <div class="col-sm-10">
                                 <?php foreach($highschool->subjects as $highschools){?>
                                 <?php echo $highschools->name.', ';?>    
@@ -286,13 +296,13 @@ use Cake\Routing\Router;
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Start Date</small></div>
+                                <div class="col-sm-2"><strong>Start Date</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $highschool->start_date;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Start Date</small></div>
+                                <div class="col-sm-2"><strong>Start Date</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $highschool->end_date;?>  
                                 </div>
@@ -305,7 +315,8 @@ use Cake\Routing\Router;
                                 </div>
                             </div>
                         </div> 
-                    </div>  
+                    </div> 
+                    <br>
                  <?php endforeach;?>
                  <?php }else{?>  
                     <div class="row custom-row">
@@ -316,14 +327,14 @@ use Cake\Routing\Router;
                         <div class="col-md-12" id="add-high" style="display:none">                             
                             <div class="high-alert"></div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>School</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>School</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="school" class="form-control">
 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Subject</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Subject</strong></label>
                                 <div class="col-sm-10">
                                  <?php           
                                  echo $this->Form->select('subject_id',$subject, ['empty' => '--Choose One--','class'=>'form-control multiselect-ui','label'=>false,'required'=>false, 'error' => true,'multiple'=>'multiple','style'=>'width:500px !important']);
@@ -331,20 +342,20 @@ use Cake\Routing\Router;
                                 </div>
                             </div>
                             <div class="form-group row">
-                            <label class="col-sm-2 control-label" for="textinput"><small>Certificate</small></label>
+                            <label class="col-sm-2 control-label" for="textinput"><strong>Certificate</strong></label>
                             <div class="col-sm-10">
                             <a href="#" class="high-cert">Upload Certificate</a>   
                             </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Start Date</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Start Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                         <input type="text" placeholder="" name="start_date" id="start-date" class="form-control">
                                     </div>
                                 </div>
-                                <label class="col-sm-2 control-label" for="textinput"><small>End Date</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>End Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
@@ -370,7 +381,7 @@ use Cake\Routing\Router;
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-success">
                 <div class="panel-heading">Tertiary Education</div>
                 <div class="panel-body">
                  <?php if(!$tertiary->isEmpty()){?> 
@@ -379,25 +390,25 @@ use Cake\Routing\Router;
                         <div class="col-md-12">                             
                             <div class="ter-alert"></div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Institution</small></div>
+                                <div class="col-sm-2"><strong>Institution</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $tertiary->institution;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Course</small></div>
+                                <div class="col-sm-2"><strong>Course</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $tertiary->course;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Start Date</small></div>
+                                <div class="col-sm-2"><strong>Start Date</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $tertiary->start_date;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Start Date</small></div>
+                                <div class="col-sm-2"><strong>Start Date</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $tertiary->end_date;?>  
                                 </div>
@@ -410,7 +421,8 @@ use Cake\Routing\Router;
                                 </div>
                             </div>
                         </div> 
-                    </div>  
+                    </div>
+                    <br>
                     <?php endforeach;?>
                     <div class="row">
                         <?php echo $this->Form->create(null,['id'=>'ter-form','url'=>['controller' => 'users', 'action' => 'savetertiary']]);?>                
@@ -420,26 +432,26 @@ use Cake\Routing\Router;
                         <div class="col-md-12" id="add-high" style="display:none">                             
                             <div class="ter-alert"></div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Institution</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Institution</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="institution" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Course</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Course</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="course" class="form-control"> 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Start Date</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Start Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                         <input type="text" placeholder="" name="start_date" id="start-date" class="form-control">
                                     </div>
                                 </div>
-                                <label class="col-sm-2 control-label" for="textinput"><small>End Date</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>End Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
@@ -466,26 +478,26 @@ use Cake\Routing\Router;
                         <div class="col-md-12" id="add-high" style="display:none">                             
                             <div class="ter-alert"></div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Institution</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Institution</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="institution" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Course</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Course</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="course" class="form-control"> 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Start Date</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Start Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                         <input type="text" placeholder="" name="start_date" id="start-date" class="form-control">
                                     </div>
                                 </div>
-                                <label class="col-sm-2 control-label" for="textinput"><small>End Date</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>End Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
@@ -511,7 +523,7 @@ use Cake\Routing\Router;
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-success">
                 <div class="panel-heading">Work Experience</div>
                 <div class="panel-body">
                  <?php if(!$workexp->isEmpty()){?> 
@@ -520,25 +532,25 @@ use Cake\Routing\Router;
                         <div class="col-md-12">                             
                             <div class="ter-alert"></div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Company</small></div>
+                                <div class="col-sm-2"><strong>Company</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $workexp->company;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Duties</small></div>
+                                <div class="col-sm-2"><strong>Duties</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $workexp->duties;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>Start Date</small></div>
+                                <div class="col-sm-2"><strong>Start Date</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $workexp->start_date;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><small>End Date</small></div>
+                                <div class="col-sm-2"><strong>End Date</strong></div>
                                 <div class="col-sm-10">
                                 <?php echo $workexp->end_date;?>  
                                 </div>
@@ -552,6 +564,7 @@ use Cake\Routing\Router;
                             </div>
                         </div> 
                     </div>  
+                    <br>
                     <?php endforeach;?>
                     <div class="row">
                         <?php echo $this->Form->create(null,['id'=>'wex-form','url'=>['controller' => 'users', 'action' => 'saveworkex']]);?>                
@@ -561,26 +574,26 @@ use Cake\Routing\Router;
                         <div class="col-md-12" id="add-wex" style="display:none">                             
                             <div class="wex-alert"></div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Company</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Company</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="company" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Duties</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Duties</strong></label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" name="duties" id="duties"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Start Date</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Start Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                         <input type="text" placeholder="" name="start_date" id="start-date" class="form-control">
                                     </div>
                                 </div>
-                                <label class="col-sm-2 control-label" for="textinput"><small>End Date</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>End Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
@@ -608,26 +621,26 @@ use Cake\Routing\Router;
                             <div class="ter-alert"></div>
                             <div class="wex-alert"></div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Company</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Company</strong></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="company" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Duties</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Duties</strong></label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" name="duties" id="duties"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><small>Start Date</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>Start Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                         <input type="text" placeholder="" name="start_date" id="start-datew" class="form-control">
                                     </div>
                                 </div>
-                                <label class="col-sm-2 control-label" for="textinput"><small>End Date</small></label>
+                                <label class="col-sm-2 control-label" for="textinput"><strong>End Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>

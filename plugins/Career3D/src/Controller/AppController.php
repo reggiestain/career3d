@@ -47,6 +47,8 @@ class AppController extends BaseController {
         $this->MessagesTable = TableRegistry::get('Career3D.Messages');
         $this->MessageReplyTable = TableRegistry::get('Career3D.Message_Reply');
         $this->ProfileCareersTable = TableRegistry::get('Career3D.Profile_Careers');
+        
+        $this->set('profileSearch' ,$this->ProfilesTable->find('all'));
     }
 
     public function initialize() {
@@ -74,6 +76,8 @@ class AppController extends BaseController {
              * 
              */
         ]);
+        
+        
     }
 
     protected function canvasAuth() {
@@ -157,7 +161,7 @@ class AppController extends BaseController {
                         return $users;
                     }
 
-                    public function sendmail($transport, $template, $to, $subj, $pId = null, $name) {
+                    public function sendmail($transport, $template, $to, $subj, $pId = null, $name,$host) {
                         $email = new Email();
                         $email->viewVars(['id' => $pId, 'name' => $name, 'hash' => $to]);
                         $email->transport($transport);

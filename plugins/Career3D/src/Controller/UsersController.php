@@ -93,7 +93,7 @@ class UsersController extends AppController {
                 $template = 'Career3D.reset_pass';
                 $pId  = hash('ripemd160', $user->id);
                 $transport = 'default';
-                $this->sendmail($transport,$template,$to,$subj,$pId,$name);
+                $this->sendmail($transport,$template,$to,$subj,$pId,$name,$_SERVER[ 'REQUEST_URI' ]);
                 $status = '200';
                 $message = 'An email has been sent to you with a link to reset your password.';
             } else {
@@ -537,14 +537,14 @@ class UsersController extends AppController {
                                 $post = $this->PostsTable->patchEntity($post, $this->request->data);
                                 $post->user_id = $this->Auth->user('id');
                                 if ($this->PostsTable->save($post)) {
-                                    $status = '500';
+                                    $status = '200';
                                     $message = 'Post was successful.';
                                 } else {
                                     $status = 'error';
                                     $message = 'An error occured, please try again.';
                                 }
                                 $this->set('status', $status);
-                                $this->set('_serialize', ['status', 'message']);
+                                $this->set('message', $message);
                                 $this->viewBuilder()->layout(false);
                             }
                         }
