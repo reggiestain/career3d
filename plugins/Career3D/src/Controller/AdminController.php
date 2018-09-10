@@ -22,13 +22,15 @@ use Facebook\Facebook;
  * @property \Career3D\Model\Table\UsersTable $Users
  */
 class AdminController extends AppController {
+    
+    private $careerTable;
 
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
         $this->loadComponent('RequestHandler');
         //$this->Auth->allow(['index', 'register', 'login']);
 
-        $this->viewBuilder()->layout('Career3D.Mentor');
+        $this->viewBuilder()->layout('Career3D.mentor-default');
 
         $img = $this->PhotosTable->find()->where(['user_id' => $this->Auth->user('id')])->order(['avatar' => 'DESC'])->first();
         $profile = $this->ProfilesTable->find()->where(['user_id' => $this->Auth->user('id')])->contain(['ProfileCareers', 'Provinces'])->first();
@@ -52,16 +54,48 @@ class AdminController extends AppController {
      *
      * @return \Cake\Network\Response|null
      */
-    public function index() {
-        
-    }
+    
 
     public function dashboard() {
         
     }
     
+    public function index() {
+       $this->careerTable = $this->viewVars['CareersTable'];
+       $career = $this->careerTable->find();
+       $this->set('career', $career);
+    }
+
     public function create() {
-        
+        $this->careerTable = $this->viewVars['CareersTable'];
+        $career = $this->careerTable->newEntity();
+        if ($this->request->is('post')) {            
+            $careerdata = $this->careerTable->patchEntity($career, $this->request->data);
+            if (empty($career->errors())) {
+                $this->careerTable->save($careerdata);
+                $this->Flash->success(__('Your career has been saved.'));
+                return $this->redirect(['action' => 'create']);
+            } else {
+            $this->Flash->error(__('Unable to add your career.'));  
+          }           
+        }
+        $this->set('career', $career);
+    }
+    
+    public function edit($id) {
+        $this->careerTable = $this->viewVars['CareersTable'];
+        $career = $this->careerTable->get($id);
+        if ($this->request->is(['post','put'])) {            
+            $careerdata = $this->careerTable->patchEntity($career, $this->request->data);
+            if (empty($career->errors())) {
+                $this->careerTable->save($careerdata);
+                $this->Flash->success(__('Your career has been updated.'));
+                return $this->redirect(['action' => 'create']);
+            } else {
+            $this->Flash->error(__('Unable to add your career.'));  
+          }           
+        }
+        $this->set('career', $career);
     }
 
     public function profile() {

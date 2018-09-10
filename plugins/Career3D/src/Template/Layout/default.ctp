@@ -22,6 +22,8 @@ $cakeDescription = '';
 <html lang="en">
     <head>    
         <title>Career Guide</title>
+        <meta name="description" content="Career3D">
+        <meta name="keywords" content="Mentorship,Careers,Recruiters,Student Life,Bursaries,Academics">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="Career Guide">
@@ -40,10 +42,12 @@ $cakeDescription = '';
         <?php echo $this->Html->css('Career3D.overlay.css') ;?>
         <?php echo $this->Html->css('Career3D.google-font-1.css') ;?>
         <?php echo $this->Html->css('Career3D.google-font-2.css') ;?>
+        <?php echo $this->Html->css('Career3D.select2.css') ;?>
         <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>-->
         <?php //echo $this->Html->script('Career3D.script');?>
-        <?php echo $this->Html->script('Career3D.jquery.min');?>        
+        <?php echo $this->Html->script('Career3D.jquery.min');?> 
+        
         <?php //echo $this->Html->script('Career3D.addtohomescreen') ;?>           
         <!-- FONT ICON (FONT-AWESOME) -->                                                
         <?php //echo $this->Html->css('http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') ;?>
@@ -74,12 +78,32 @@ $cakeDescription = '';
         </script>-->
         <?php echo $this->Html->script('Career3D.bootstrap.min');?>
         <?php echo $this->Html->script('Career3D.bootstrap-datepicker.min');?> 
+        <?php echo $this->Html->script('Career3D.select25');?>
         <!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
         <?php //echo $this->Html->script('Career3D.gmaps') ;?>
-        <?php //echo $this->Html->script('Career3D.smoothscroll');?>
+        <?php //echo $this->Html->script('Career3D.smoothscroll');?>        
+        <?php //echo $this->Html->script('Career3D.custom');?>    
+        <?php echo $this->Html->script('Career3D.custom-2');?>
+          
         
-        <?php //echo $this->Html->script('Career3D.custom');?>        
-        <?php echo $this->Html->script('Career3D.custom-2');?>       
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-81003044-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-81003044-2');
+</script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4204410640766542",
+    enable_page_level_ads: true
+  });
+</script>
+
         
     </body>
 </html>

@@ -23,19 +23,16 @@ use Cake\Validation\Validator;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Rule\IsUnique;
 
-class ProfileCareersTable extends Table {
+class CareersProfilesTable extends Table {
 
     public function initialize(array $config) {
 
-        $this->table('profile_careers');
+        $this->table('careers_profiles');
         $this->addBehavior('Timestamp');
         //$this->primaryKey('profile_id');  
         
-        $this->belongsTo('Career3D.Careers', [
-            'className' => 'Career3D.Careers',
-            'foreignKey' => 'career_id',
-            'joinType' => 'INNER'
-        ]);
+        $this->belongsTo('Career3D.Profiles');
+        $this->belongsTo('Career3D.Careers');
 
     }
 

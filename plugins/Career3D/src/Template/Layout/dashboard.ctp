@@ -36,7 +36,7 @@ $cakeDescription = '';
   <!--<script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>--> 
   <?php echo $this->Html->script('Career3D.jquery.min');?>
   <?php echo $this->Html->script('Career3D.bootstrap.min');?>
- <?php echo $this->Html->script('Career3D.jquery.nicescroll/jquery.nicescroll.iframehelper');?> 
+  <?php echo $this->Html->script('Career3D.jquery.nicescroll/jquery.nicescroll.iframehelper');?> 
   <?php echo $this->Html->script('Career3D.jquery.nicescroll/jquery.nicescroll.min');?>       
   <?php echo $this->Html->script('perfect-scrollbar.min');?>
   <?php echo $this->Html->script('Career3D.bootstrap-datepicker.min');?>
@@ -143,5 +143,16 @@ $cakeDescription = '';
             });
         });
     </script>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-81003044-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-81003044-2');
+</script>
+
 </body>
 </html>

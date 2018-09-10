@@ -25,7 +25,7 @@ class PagesController extends AppController {
 
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['register','resetpass','sendmessage']);
+        $this->Auth->allow(['register','resetpass','sendmessage','careerinfo']);
         $this->UsersTable = TableRegistry::get('Career3D.Users');
         $this->ProfilesTable = TableRegistry::get('Career3D.Profiles');
         $this->ProvincesTable = TableRegistry::get('Career3D.Provinces');
@@ -41,6 +41,14 @@ class PagesController extends AppController {
      *
      * @return \Cake\Network\Response|null
      */
+    
+    public function careerinfo($id) {
+        $this->careerTable = $this->viewVars['CareersTable'];
+        $career = $this->careerTable->get($id);
+        $this->set('careerInfo', $career);
+        $this->viewBuilder()->layout(false);
+       
+    }
     
     public function register() {
         if ($this->request->is('ajax')) {

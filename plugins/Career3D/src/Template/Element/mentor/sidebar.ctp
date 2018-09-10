@@ -68,7 +68,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href=""><i class="fa fa-circle-o"></i> All Careers</a></li>
+                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/admin/index');?>"><i class="fa fa-circle-o"></i> All Careers</a></li>
                 <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/admin/create');?>"><i class="fa fa-circle-o"></i> Create Career</a></li>
                 <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
               </ul>

@@ -27,7 +27,10 @@ class CareersTable extends Table {
         $this->table('careers');
         $this->addBehavior('Timestamp');
         // Just add the belongsTo relation with CategoriesTable
-        //$this->primaryKey('profile_id');       
+        //$this->primaryKey('profile_id');
+        $this->belongsToMany('Career3D.Profiles', [
+            'through' => 'Career3D.CareersProfiles',
+        ]);
 
         /*
           $this->addAssociations([
@@ -43,7 +46,7 @@ class CareersTable extends Table {
     
     public function validationDefault(Validator $validator) {
 
-        $validator->notEmpty('name', 'Language is required');
+        $validator->notEmpty('name', 'Career name is required');
 
 
         return $validator;

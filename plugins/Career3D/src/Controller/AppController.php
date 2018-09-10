@@ -20,11 +20,14 @@ class AppController extends BaseController {
      *
      * @return void
      */
+    
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
+        $this->set('UsersTable' ,TableRegistry::get('Career3D.Users'));
         $this->UsersTable = TableRegistry::get('Career3D.Users');
         $this->ProfilesTable = TableRegistry::get('Career3D.Profiles');
-        $this->CareersTable = TableRegistry::get('Career3D.Careers');
+        $this->set('CareersTable' ,TableRegistry::get('Career3D.Careers'));
+        //$this->CareersTable = TableRegistry::get('Career3D.Careers');
         $this->PhotosTable = TableRegistry::get('Career3D.Photos');
         $this->TopicsTable = TableRegistry::get('Career3D.Topics');
         $this->PostsTable = TableRegistry::get('Career3D.Posts');
@@ -122,7 +125,7 @@ class AppController extends BaseController {
             }
 
             public function profileInfo($userInfo) {
-                $profile = $this->ProfilesTable->find()->where(['user_id' => $userInfo])->contain(['Provinces', 'ProfileCareers.Careers'])->first();
+                $profile = $this->ProfilesTable->find()->where(['user_id' => $userInfo])->contain(['Provinces', 'Careers'])->first();
                 return $profile;
             }
 

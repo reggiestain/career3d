@@ -31,8 +31,9 @@ $cakeDescription = '';
         <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />   
         <?php echo $this->Html->css('Career3D.mentor/AdminLTE.min.css');?>
         <?php echo $this->Html->css('Career3D.mentor/skins/_all-skins.min.css') ;?>
-        <?php echo $this->Html->css('Career3D.mentor/iCheck/flat/blue.css');?>
         <?php echo $this->Html->css('Career3D.mentor/morris/morris.css');?>
+        <?php echo $this->Html->css('Career3D.mentor/iCheck/flat/blue.css');?>
+        
         <?php echo $this->Html->css('Career3D.mentor/jvectormap/jquery-jvectormap-1.2.2.css');?>
         <?php echo $this->Html->css('Career3D.mentor/datepicker/datepicker3.css') ;?>
         <?php echo $this->Html->css('Career3D.mentor/daterangepicker/daterangepicker-bs3.css');?>
@@ -41,7 +42,7 @@ $cakeDescription = '';
     <body class="skin-blue">  
     <div class="wrapper">     
     <?php echo $this->fetch('content');?>
-        <!-- Include JS files --> 
+    <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -49,17 +50,17 @@ $cakeDescription = '';
         </div>
         <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
     </footer>
-    <?php echo $this->Html->script('Career3D.mentor/jQuery/jQuery-2.1.3.min');?>
-        <!-- jQuery UI 1.11.2 -->
-    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+    <?php echo $this->Html->script('Career3D.mentor/jQuery/jquery.min');?>
+        <!-- jQuery UI-->
+    <?php echo $this->Html->script('Career3D.mentor/jQuery/jquery-ui.min');?>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-     <script>
+    <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 3.3.2 JS -->    
-    <?php echo $this->Html->script('Career3D.mentor/jQuery/jQuery-2.1.3.min');?>
+    <?php echo $this->Html->script('Career3D.mentor/bootstrap/bootstrap.min');?>
     <!-- Morris.js charts -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <?php echo $this->Html->script('Career3D.mentor/raphael/raphael.min');?>
     <?php echo $this->Html->script('Career3D.mentor/morris/morris.min');?>
     <!-- Sparkline -->
     <?php echo $this->Html->script('Career3D.mentor/sparkline/jquery.sparkline.min');?>
@@ -86,71 +87,16 @@ $cakeDescription = '';
     <!-- AdminLTE for demo purposes -->
     <?php echo $this->Html->script('Career3D.mentor/demo');?>
     <?php //echo $this->Html->css('Career3D.summernote.css') ;?>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-81003044-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-81003044-2');
+</script>
+
     </body>
 </html>
-<script>
-    var $ = jQuery;
-    $(document).ready(function () {
-        $(".register").click(function () {
-            $("#regModal").modal();
-        });
-        $(".signup").click(function () {
-            $("#loginModal").modal();
-        });
-        $('#b-date').datepicker();
-        
-        $('#reg-form').submit(function (event) {
-            event.preventDefault();
-            var formData = $("#reg-form").serialize();
-            var url = $("#reg-form").attr("action");
-            $.ajax({
-                url: url,
-                type: "POST",
-                asyn: false,
-                data: formData,
-                success: function (data, textStatus, jqXHR)
-                {
-                    if (data === '200') {
-                        $("#regModal").modal('hide');
-                        $(".log-alert").html("<div class='alert alert-success'>\n\
-                                   <a class='close' href='#' data-dismiss='alert' aria-label='close' title='close'>×</a>\n\
-                                   <strong>Success!</strong> Registration was successful, please login with your email and password.</div>");
-                        $("#loginModal").modal('show');
-                    } else {
-                        $(".reg-alert").html(data);
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert(errorThrown);
-                    location.reload();
-                }
-            });
-        });
-        
-        $('#logi-form').submit(function (event) {
-            event.preventDefault();
-            var formData = $("#login-form").serialize();
-            var url = $("#login-form").attr("action");
-            $.ajax({
-                url: url,
-                type: "POST",
-                asyn: false,
-                data: formData,
-                success: function (data, textStatus, jqXHR)
-                {
-                    if (data === '200') {
-                        $("#loginModal").modal('hide');
-                       //window.location.href ="<?php //echo Router::url('career3-d/users/dashboard');?>";
-                    } else {
-                        $(".log-alert").html(data);
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert(errorThrown);
-                    location.reload();
-                }
-            });
-        });
 
-    });
-</script>

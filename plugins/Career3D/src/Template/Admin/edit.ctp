@@ -78,14 +78,6 @@ use Cake\Network\Exception\NotFoundException;
                   <label>Educational Requirements - which qualifications do I need to enter this occupation?</label>
                   <?php echo $this->Form->textarea('educational_req',['templates' => ['inputContainer' => '{{content}}'],'type' => 'text','label' => false,'class'=>'form-control','id'=>'summernote-4','required'=>false, 'error' => true]);?>                              
                   </div>                
-                <div class="form-group">
-                  <label>Entry to Tertiary or Further Studies</label>
-                  <?php echo $this->Form->textarea('further_studies',['templates' => ['inputContainer' => '{{content}}'],'type' => 'text','label' => false,'class'=>'form-control','id'=>'summernote-5','required'=>false, 'error' => true]);?>                                                
-                </div>               
-                <div class="form-group">
-                  <label>Entry to Work Place</label>
-                   <?php echo $this->Form->textarea('entry_to_work',['templates' => ['inputContainer' => '{{content}}'],'type' => 'text','label' => false,'class'=>'form-control','id'=>'summernote-6','required'=>false, 'error' => true]);?>                                                                
-                </div>
                 
                 <div class="form-group">
                   <label>What level of natural skill and/or aptitude do I need for this occupation?</label>
@@ -112,7 +104,7 @@ use Cake\Network\Exception\NotFoundException;
                    <?php echo $this->Form->textarea('career_progress',['templates' => ['inputContainer' => '{{content}}'],'type' => 'text','label' => false,'class'=>'form-control','id'=>'summernote-11','required'=>false, 'error' => true]);?>                                                                
                 </div>
                 
-                 <div class="form-group">
+                <div class="form-group">
                   <label>Employment Stability</label>
                    <?php echo $this->Form->textarea('emp_stability',['templates' => ['inputContainer' => '{{content}}'],'type' => 'text','label' => false,'class'=>'form-control','id'=>'summernote-12','required'=>false, 'error' => true]);?>                                                                
                 </div>
@@ -121,6 +113,7 @@ use Cake\Network\Exception\NotFoundException;
                   <label>Possible reasons to consider this career – I should consider this career if I want a job where:</label>
                    <?php echo $this->Form->textarea('career_consideration',['templates' => ['inputContainer' => '{{content}}'],'type' => 'text','label' => false,'class'=>'form-control','id'=>'summernote-13','required'=>false, 'error' => true]);?>                                                                
                 </div>
+               
                
               <div class="box-footer">
                 <button class="btn btn-default">Cancel</button>
@@ -170,22 +163,6 @@ use Cake\Network\Exception\NotFoundException;
         });
         
         $('#summernote-4').summernote({
-            height: 150, //set editable area's height
-            //placeholder: 'Write a post......',
-            codemirror: {// codemirror options
-                theme: 'monokai'
-            }
-        });
-        
-        $('#summernote-5').summernote({
-            height: 150, //set editable area's height
-            //placeholder: 'Write a post......',
-            codemirror: {// codemirror options
-                theme: 'monokai'
-            }
-        });
-        
-        $('#summernote-6').summernote({
             height: 150, //set editable area's height
             //placeholder: 'Write a post......',
             codemirror: {// codemirror options

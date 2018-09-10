@@ -34,7 +34,11 @@ class ProfilesTable extends Table {
             'joinType' => 'INNER'
         ]);
         
-        $this->hasMany('Career3D.ProfileCareers');
+        $this->belongsToMany('Career3D.Careers');
+        
+        $this->belongsToMany('Career3D.Careers', [
+            'through' => 'Career3D.CareersProfiles',
+        ]);
         
         $this->belongsTo('Career3D.Provinces', [
             'className' => 'Career3D.Provinces',
@@ -50,6 +54,7 @@ class ProfilesTable extends Table {
        $validator->notEmpty('firstname', 'First name is required.')
                 ->notEmpty('surname', 'Surname is required.')
                 ->notEmpty('birth_date', 'Date of birth is required.')
+                ->notEmpty('race', 'Race is required.')
                 ->notEmpty('career_id', 'Career Path is required.')
                 ->add('email', ['unique' => [
                         'rule' => 'validateUnique',

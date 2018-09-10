@@ -55,6 +55,7 @@ class UsersController extends AppController {
         $province = $this->ProvincesTable->find('list');
 
         $profile = $this->profileInfo($this->Auth->user('id'));
+        
         if (empty($img)) {
             $this->set('img', 'profile.jpg');
         } else {
@@ -254,12 +255,12 @@ class UsersController extends AppController {
                 $address = $this->AddressesTable->find('all')->where(['user_id' => $this->Auth->user('id')])->contain(['Provinces']);
                 $tertiary = $this->TertiariesTable->find('all')->where(['user_id' => $this->Auth->user('id')]);
                 $workexp = $this->WorkExpsTable->find('all')->where(['user_id' => $this->Auth->user('id')]);
-
                 $this->set('subject', $subject);
                 $this->set('address', $address);
                 $this->set('tertiary', $tertiary);
                 $this->set('highschool', $highschool);
                 $this->set('workexp', $workexp);
+                
             }
 
             public function savehighschool() {
@@ -304,7 +305,7 @@ class UsersController extends AppController {
                     if ($this->request->is('post')) {
                         $address = $this->AddressesTable->newEntity();
                         $address->user_id = $this->Auth->user('id');
-                        $$address = $this->AddressesTable->patchEntity($address, $this->request->data);
+                        $address = $this->AddressesTable->patchEntity($address, $this->request->data);
                         if (empty($address->errors())) {
                             $this->AddressesTable->save($address);
                             $status = '500';
@@ -394,8 +395,10 @@ class UsersController extends AppController {
 
             public function editpersonal($profileId) {
                 if ($this->request->is('ajax')) {
+                    $status = '200';
+                    $message = '';
                     $profile = $this->ProfilesTable->get($profileId, [
-                        'contain' => ['ProfileCareers.Careers']
+                        'contain' => ['Provinces','Careers']
                     ]);
                     if ($this->request->is(['put'])) {
                         $this->ProfilesTable->patchEntity($profile, $this->request->data);

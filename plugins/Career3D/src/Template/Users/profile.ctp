@@ -139,7 +139,7 @@ use Cake\Routing\Router;
                             <div class="form-group row">
                                 <div class="col-sm-2"><small>Career</small></div>
                                 <div class="col-sm-10">
-                                <?php echo $profile->profile_careers[0]->career->name;?>  
+                                <?php echo $profile->careers[0]->name;?>  
                                 </div>
                             </div>
                             <div class="form-group row">

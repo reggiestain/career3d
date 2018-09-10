@@ -28,7 +28,7 @@ if($status ==='500'){
 ?>
 <div>
     <div class="update-alert"></div>
- <?php echo $this->Form->create($profile,['id'=>'info-form','url'=>['controller' => 'users', 'action' => 'editpersonal',$profile->id]]);?>
+    <?php echo $this->Form->create($profile,['id'=>'info-form','url'=>['controller' => 'users', 'action' => 'editpersonal',$profile->id]]);?>
     <div class="row">
         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6">
             <label for="firstname" class="form-label">First Name</label>
@@ -74,10 +74,9 @@ if($status ==='500'){
                         ?>
         </div> 
         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6">
-            <label for="career" class="form-label">Career Path</label> 
-            <input type="text" value="<?php echo $profile->profile_careers[0]->career->name;?>" class="form-control" disabled="disabled"/>
-                        <?php           
-                       // echo $this->Form->text('career_id',$profile->profile_careers[0]->career->name, ['class'=>'form-control','label'=>false,'required'=>false, 'error' => true]);
+            <label for="career" class="form-label">Career Path</label>    
+                        <?php          
+                        echo $this->Form->select('career_id',$careers, ['empty' => '--Choose One--','class'=>'form-control','label'=>false,'required'=>false, 'error' => true]);
                         ?>
         </div>
     </div> 
