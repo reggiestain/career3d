@@ -4,7 +4,7 @@ namespace Career3D\Controller;
 
 use Career3D\Controller\AppController;
 //use App\Controller\AppController;
-use Cake\ORM\TableRegistry;
+use Cake\ORM\Registry;
 use Cake\I18n\Time;
 use Cake\Event\Event;
 use Cake\Network\Exception\NotFoundException;
@@ -18,7 +18,7 @@ use LearnositySdk\Request\DataApi;
 /**
  * Users Controller
  *
- * @property \Career3D\Model\Table\UsersTable $Users
+ * @property \Career3D\Model\\Users $Users
  */
 class NetworksController extends AppController {
 
@@ -27,9 +27,9 @@ class NetworksController extends AppController {
         $this->loadComponent('RequestHandler');
         $this->Auth->allow(['index', 'register', 'login']);
         $this->viewBuilder()->layout('Career3D.dashboard');
-        $img = $this->PhotosTable->find()->where(['user_id' => $this->Auth->user('id')])->order(['avatar' => 'DESC'])->first();
+        $img = $this->Photos->find()->where(['user_id' => $this->Auth->user('id')])->order(['avatar' => 'DESC'])->first();
         $profile = $this->profileInfo($this->Auth->user('id'));
-        $province = $this->ProvincesTable->find('list');
+        $province = $this->Provinces->find('list');
         if (empty($img)) {
             $this->set('img', 'profile.jpg');
         } else {
@@ -60,11 +60,11 @@ class NetworksController extends AppController {
      */
     public function connect() {
         if ($this->request->is('ajax')) {
-            $netwrk = $this->NetworksTable->newEntity();
+            $netwrk = $this->Networks->newEntity();
             if ($this->request->is('post')) {
-                $netwrk = $this->NetworksTable->patchEntity($netwrk, $this->request->data);
+                $netwrk = $this->Networks->patchEntity($netwrk, $this->request->data);
                 $netwrk->user_id = $this->Auth->user('id');
-                if ($this->NetworksTable->save($netwrk)) {
+                if ($this->Networks->save($netwrk)) {
                     $msg = $this->request->data('status');
                    }else{
                    $msg = 'error';
@@ -78,11 +78,11 @@ class NetworksController extends AppController {
 
     public function decide($id, $status) {
         if ($this->request->is('ajax')) {
-            $netwrk = $this->NetworksTable->get($id);
+            $netwrk = $this->Networks->get($id);
             if ($this->request->is('post')) {
-                $netwrk = $this->NetworksTable->patchEntity($netwrk, $this->request->data);
+                $netwrk = $this->Networks->patchEntity($netwrk, $this->request->data);
                 $netwrk->status = $status;
-                if ($this->NetworksTable->save($netwrk)) {
+                if ($this->Networks->save($netwrk)) {
                     $this->Flash->success(__($this->request->data('status') . " successfully."));
                     //return $this->redirect(['action' => 'index']);
                 }
@@ -92,8 +92,8 @@ class NetworksController extends AppController {
     }
 
     public function dashboard() {
-        $topics = $this->TopicsTable->find('list');
-        $post = $this->PostsTable->find()->order(['Posts.id' => 'DESC'])->contain(['Users', 'Topics', 'Users.Photos' => function($q) {
+        $topics = $this->Topics->find('list');
+        $post = $this->Posts->find()->order(['Posts.id' => 'DESC'])->contain(['Users', 'Topics', 'Users.Photos' => function($q) {
                 $q->order(['avatar' => 'DESC']);
                 return $q;
             },
@@ -110,11 +110,11 @@ class NetworksController extends AppController {
 
             public function profile() {
                 $this->dashboard();
-                $subject = $this->SubjectsTable->find('list');
-                $highschool = $this->HighSchoolsTable->find('all')->where(['user_id' => $this->Auth->user('id')])->contain(['Subjects']);
-                $address = $this->AddressesTable->find('all')->where(['user_id' => $this->Auth->user('id')])->contain(['Provinces']);
-                $tertiary = $this->TertiariesTable->find('all')->where(['user_id' => $this->Auth->user('id')]);
-                $workexp = $this->WorkExpsTable->find('all')->where(['user_id' => $this->Auth->user('id')]);
+                $subject = $this->Subjects->find('list');
+                $highschool = $this->HighSchools->find('all')->where(['user_id' => $this->Auth->user('id')])->contain(['Subjects']);
+                $address = $this->Addresses->find('all')->where(['user_id' => $this->Auth->user('id')])->contain(['Provinces']);
+                $tertiary = $this->Tertiaries->find('all')->where(['user_id' => $this->Auth->user('id')]);
+                $workexp = $this->WorkExps->find('all')->where(['user_id' => $this->Auth->user('id')]);
 
 
                 $this->set('subject', $subject);
@@ -127,16 +127,16 @@ class NetworksController extends AppController {
             public function savehighschool() {
                 if ($this->request->is('ajax')) {
                     if ($this->request->is('post')) {
-                        $high = $this->HighSchoolsTable->newEntity();
+                        $high = $this->HighSchools->newEntity();
                         $high->user_id = $this->Auth->user('id');
-                        $high = $this->HighSchoolsTable->patchEntity($high, $this->request->data);
+                        $high = $this->HighSchools->patchEntity($high, $this->request->data);
                         if (empty($high->errors())) {
-                            $this->HighSchoolsTable->save($high);
+                            $this->HighSchools->save($high);
                             foreach ($this->request->data('subject_id') as $subject) {
-                                $highsubject = $this->HighSubjectsTable->newEntity();
+                                $highsubject = $this->HighSubjects->newEntity();
                                 $data = ['subject_id' => $subject, 'high_school_id' => $high->id];
-                                $this->HighSubjectsTable->patchEntity($highsubject, $data);
-                                $this->HighSubjectsTable->save($highsubject);
+                                $this->HighSubjects->patchEntity($highsubject, $data);
+                                $this->HighSubjects->save($highsubject);
                             }
                             $status = '500';
                             $message = 'High school was successfully saved.';
@@ -164,11 +164,11 @@ class NetworksController extends AppController {
             public function saveaddress() {
                 if ($this->request->is('ajax')) {
                     if ($this->request->is('post')) {
-                        $address = $this->AddressesTable->newEntity();
+                        $address = $this->Addresses->newEntity();
                         $address->user_id = $this->Auth->user('id');
-                        $$address = $this->AddressesTable->patchEntity($address, $this->request->data);
+                        $$address = $this->Addresses->patchEntity($address, $this->request->data);
                         if (empty($address->errors())) {
-                            $this->AddressesTable->save($address);
+                            $this->Addresses->save($address);
                             $status = '500';
                             $message = 'Address was successfully saved.';
                         } else {
@@ -195,11 +195,11 @@ class NetworksController extends AppController {
             public function savetertiary() {
                 if ($this->request->is('ajax')) {
                     if ($this->request->is('post')) {
-                        $tertiaries = $this->TertiariesTable->newEntity();
+                        $tertiaries = $this->Tertiaries->newEntity();
                         $tertiaries->user_id = $this->Auth->user('id');
-                        $tertiaries = $this->TertiariesTable->patchEntity($tertiaries, $this->request->data);
+                        $tertiaries = $this->Tertiaries->patchEntity($tertiaries, $this->request->data);
                         if (empty($tertiaries->errors())) {
-                            $this->TertiariesTable->save($tertiaries);
+                            $this->Tertiaries->save($tertiaries);
                             $status = '500';
                             $message = 'Address was successfully saved.';
                         } else {
@@ -226,11 +226,11 @@ class NetworksController extends AppController {
             public function saveworkex() {
                 if ($this->request->is('ajax')) {
                     if ($this->request->is('post')) {
-                        $workexp = $this->WorkExpsTable->newEntity();
+                        $workexp = $this->WorkExps->newEntity();
                         $workexp->user_id = $this->Auth->user('id');
-                        $workexp = $this->WorkExpsTable->patchEntity($workexp, $this->request->data);
+                        $workexp = $this->WorkExps->patchEntity($workexp, $this->request->data);
                         if (empty($workexp->errors())) {
-                            $this->WorkExpsTable->save($workexp);
+                            $this->WorkExps->save($workexp);
                             $status = '500';
                             $message = 'Address was successfully saved.';
                         } else {
@@ -256,10 +256,10 @@ class NetworksController extends AppController {
 
             public function editpersonal($profileId) {
                 if ($this->request->is('ajax')) {
-                    $profile = $this->ProfilesTable->get($profileId);
+                    $profile = $this->Profiles->get($profileId);
                     if ($this->request->is(['put'])) {
-                        $this->ProfilesTable->patchEntity($profile, $this->request->data);
-                        if ($this->ProfilesTable->save($profile)) {
+                        $this->Profiles->patchEntity($profile, $this->request->data);
+                        if ($this->Profiles->save($profile)) {
                             $status = '500';
                             $message = 'update';
                         }
@@ -267,7 +267,7 @@ class NetworksController extends AppController {
                         $status = '200';
                         $message = '';
                     }
-                    $careers = $this->CareersTable->find('list');
+                    $careers = $this->Careers->find('list');
                     $this->set('profile', $profile);
                     $this->set('careers', $careers);
                     $this->set('status', $status);
@@ -278,10 +278,10 @@ class NetworksController extends AppController {
 
             public function editaddress($addressId) {
                 if ($this->request->is('ajax')) {
-                    $address = $this->AddressesTable->get($addressId);
+                    $address = $this->Addresses->get($addressId);
                     if ($this->request->is(['put'])) {
-                        $this->AddressesTable->patchEntity($address, $this->request->data);
-                        if ($this->AddressesTable->save($address)) {
+                        $this->Addresses->patchEntity($address, $this->request->data);
+                        if ($this->Addresses->save($address)) {
                             $status = '500';
                             $message = 'update';
                         }
@@ -289,7 +289,7 @@ class NetworksController extends AppController {
                         $status = '200';
                         $message = '';
                     }
-                    $province = $this->ProvincesTable->find('list');
+                    $province = $this->Provinces->find('list');
                     $this->set('address', $address);
                     $this->set('province', $province);
                     $this->set('status', $status);
@@ -300,10 +300,10 @@ class NetworksController extends AppController {
 
             public function edithigh($highId) {
                 if ($this->request->is('ajax')) {
-                    $high = $this->HighSchoolsTable->get($highId, ['contain' => ['Subjects']]);
+                    $high = $this->HighSchools->get($highId, ['contain' => ['Subjects']]);
                     if ($this->request->is(['put'])) {
-                        $this->HighSchoolsTable->patchEntity($high, $this->request->data, ['associated' => ['Subjects']]);
-                        if ($this->HighSchoolsTable->save($high)) {
+                        $this->HighSchools->patchEntity($high, $this->request->data, ['associated' => ['Subjects']]);
+                        if ($this->HighSchools->save($high)) {
                             $status = '500';
                             $message = 'update';
                         }
@@ -312,7 +312,7 @@ class NetworksController extends AppController {
                         $message = '';
                     }
 
-                    $subject = $this->SubjectsTable->find('list');
+                    $subject = $this->Subjects->find('list');
                     $this->set('high', $high);
                     $this->set('subject', $subject);
                     $this->set('status', $status);
@@ -323,10 +323,10 @@ class NetworksController extends AppController {
 
             public function edittertiary($TerId) {
                 if ($this->request->is('ajax')) {
-                    $tertiary = $this->TertiariesTable->get($TerId);
+                    $tertiary = $this->Tertiaries->get($TerId);
                     if ($this->request->is(['put'])) {
-                        $this->TertiariesTable->patchEntity($tertiary, $this->request->data);
-                        if ($this->TertiariesTable->save($tertiary)) {
+                        $this->Tertiaries->patchEntity($tertiary, $this->request->data);
+                        if ($this->Tertiaries->save($tertiary)) {
                             $status = '500';
                             $message = 'update';
                         }
@@ -343,10 +343,10 @@ class NetworksController extends AppController {
 
             public function editworkex($exId) {
                 if ($this->request->is('ajax')) {
-                    $workexp = $this->WorkExpsTable->get($exId);
+                    $workexp = $this->WorkExps->get($exId);
                     if ($this->request->is(['put'])) {
-                        $this->WorkExpsTable->patchEntity($workexp, $this->request->data);
-                        if ($this->WorkExpsTable->save($workexp)) {
+                        $this->WorkExps->patchEntity($workexp, $this->request->data);
+                        if ($this->WorkExps->save($workexp)) {
                             $status = '500';
                             $message = 'update';
                         }
@@ -364,7 +364,7 @@ class NetworksController extends AppController {
             public function showcomment() {
                 if ($this->request->is('ajax')) {
                     if ($this->request->is('post')) {
-                        $comments = $this->CommentsTable->find()->where(['post_id' => $this->request->data('post_id')])->contain(['Users.Photos' => function($q) {
+                        $comments = $this->Comments->find()->where(['post_id' => $this->request->data('post_id')])->contain(['Users.Photos' => function($q) {
                                 $q->order(['avatar' => 'DESC']);
                                 return $q;
                             }, 'CommentReplies', 'CommentLikes']);
@@ -376,13 +376,13 @@ class NetworksController extends AppController {
                     }
 
                     public function countcomment($id) {
-                        $comments = $this->CommentsTable->find()->where(['post_id' => $id])->count();
+                        $comments = $this->Comments->find()->where(['post_id' => $id])->count();
                         echo $comments . ' comment';
                         exit();
                     }
 
                     public function countreply($id) {
-                        $comments = $this->CommentReplysTable->find()->where(['comment_id' => $id])->count();
+                        $comments = $this->CommentReplys->find()->where(['comment_id' => $id])->count();
                         echo $comments . ' Reply';
                         exit();
                     }
@@ -390,10 +390,10 @@ class NetworksController extends AppController {
                     public function publish() {
                         if ($this->request->is('ajax')) {
                             if ($this->request->is('post')) {
-                                $post = $this->PostsTable->newEntity();
-                                $post = $this->PostsTable->patchEntity($post, $this->request->data);
+                                $post = $this->Posts->newEntity();
+                                $post = $this->Posts->patchEntity($post, $this->request->data);
                                 $post->user_id = $this->Auth->user('id');
-                                if ($this->PostsTable->save($post)) {
+                                if ($this->Posts->save($post)) {
                                     $status = '500';
                                     $message = 'Post was successful.';
                                 } else {
@@ -410,14 +410,14 @@ class NetworksController extends AppController {
                     public function like() {
                         if ($this->request->is('ajax')) {
                             if ($this->request->data) {
-                                $likes = $this->LikesTable->newEntity();
+                                $likes = $this->Likes->newEntity();
                                 $likes->user_id = $this->Auth->user('id');
-                                $post = $this->LikesTable->find()->where(['user_id' => $this->Auth->user('id'), 'post_id' => $this->request->data('post_id')])->first();
+                                $post = $this->Likes->find()->where(['user_id' => $this->Auth->user('id'), 'post_id' => $this->request->data('post_id')])->first();
                                 if ($post) {
-                                    $this->LikesTable->delete($post);
+                                    $this->Likes->delete($post);
                                 } else {
-                                    $likes = $this->LikesTable->patchEntity($likes, $this->request->data);
-                                    if ($this->LikesTable->save($likes)) {
+                                    $likes = $this->Likes->patchEntity($likes, $this->request->data);
+                                    if ($this->Likes->save($likes)) {
                                         $status = '500';
                                         $message = 'Post was successful.';
                                     } else {
@@ -425,7 +425,7 @@ class NetworksController extends AppController {
                                         $message = 'An error occured, please try again.';
                                     }
                                 }
-                                $post = $this->PostsTable->find()->order(['Posts.id' => 'DESC'])->contain(['Users', 'Topics', 'Users.Photos' => function($q) {
+                                $post = $this->Posts->find()->order(['Posts.id' => 'DESC'])->contain(['Users', 'Topics', 'Users.Photos' => function($q) {
                                         $q->order(['avatar' => 'DESC']);
                                         return $q;
                                     },
@@ -444,14 +444,14 @@ class NetworksController extends AppController {
                             public function likecomment() {
                                 if ($this->request->is('ajax')) {
                                     if ($this->request->data) {
-                                        $likes = $this->CommentLikesTable->newEntity();
+                                        $likes = $this->CommentLikes->newEntity();
                                         $likes->user_id = $this->Auth->user('id');
-                                        $post = $this->CommentLikesTable->find()->where(['user_id' => $this->Auth->user('id'), 'comment_id' => $this->request->data('comment_id')])->first();
+                                        $post = $this->CommentLikes->find()->where(['user_id' => $this->Auth->user('id'), 'comment_id' => $this->request->data('comment_id')])->first();
                                         if ($post) {
-                                            $this->CommentLikesTable->delete($post);
+                                            $this->CommentLikes->delete($post);
                                         } else {
-                                            $likes = $this->CommentLikesTable->patchEntity($likes, $this->request->data);
-                                            if ($this->CommentLikesTable->save($likes)) {
+                                            $likes = $this->CommentLikes->patchEntity($likes, $this->request->data);
+                                            if ($this->CommentLikes->save($likes)) {
                                                 $status = '500';
                                                 $message = 'Post was successful.';
                                             } else {
@@ -459,7 +459,7 @@ class NetworksController extends AppController {
                                                 $message = 'An error occured, please try again.';
                                             }
                                         }
-                                        $comments = $this->CommentsTable->find()->where(['post_id' => $this->request->data('post_id')])->contain(['Users.Photos' => function($q) {
+                                        $comments = $this->Comments->find()->where(['post_id' => $this->request->data('post_id')])->contain(['Users.Photos' => function($q) {
                                                 $q->order(['avatar' => 'DESC']);
                                                 return $q;
                                             }, 'CommentReplies', 'CommentLikes']);
@@ -473,10 +473,10 @@ class NetworksController extends AppController {
                                     public function comment() {
                                         if ($this->request->is('ajax')) {
                                             if ($this->request->is('post')) {
-                                                $comment = $this->CommentsTable->newEntity();
-                                                $comment = $this->CommentsTable->patchEntity($comment, $this->request->data);
+                                                $comment = $this->Comments->newEntity();
+                                                $comment = $this->Comments->patchEntity($comment, $this->request->data);
                                                 $comment->user_id = $this->Auth->user('id');
-                                                if ($this->CommentsTable->save($comment)) {
+                                                if ($this->Comments->save($comment)) {
                                                     $status = '500';
                                                     $message = 'Post was successful.';
                                                 } else {
@@ -484,7 +484,7 @@ class NetworksController extends AppController {
                                                     $message = 'An error occured, please try again.';
                                                 }
 
-                                                $comments = $this->CommentsTable->find()->where(['post_id' => $this->request->data('post_id')])->contain(['Users.Photos' => function($q) {
+                                                $comments = $this->Comments->find()->where(['post_id' => $this->request->data('post_id')])->contain(['Users.Photos' => function($q) {
                                                         $q->order(['avatar' => 'DESC']);
                                                         return $q;
                                                     }, 'CommentReplies', 'CommentLikes']);
@@ -499,7 +499,7 @@ class NetworksController extends AppController {
                                             public function showcommentreply() {
                                                 if ($this->request->is('ajax')) {
                                                     if ($this->request->is('post')) {
-                                                        $commentreply = $this->CommentReplysTable->find()->where(['comment_id' => $this->request->data('comment_id')])
+                                                        $commentreply = $this->CommentReplys->find()->where(['comment_id' => $this->request->data('comment_id')])
                                                                 ->contain(['Users.Photos' => function($q) {
                                                                 $q->order(['avatar' => 'DESC']);
                                                                 return $q;
@@ -514,17 +514,17 @@ class NetworksController extends AppController {
                                                     public function addreply() {
                                                         if ($this->request->is('ajax')) {
                                                             if ($this->request->is('post')) {
-                                                                $commentreply = $this->CommentReplysTable->newEntity();
-                                                                $commentreply = $this->CommentReplysTable->patchEntity($commentreply, $this->request->data);
+                                                                $commentreply = $this->CommentReplys->newEntity();
+                                                                $commentreply = $this->CommentReplys->patchEntity($commentreply, $this->request->data);
                                                                 $commentreply->user_id = $this->Auth->user('id');
-                                                                if ($this->CommentReplysTable->save($commentreply)) {
+                                                                if ($this->CommentReplys->save($commentreply)) {
                                                                     $status = '500';
                                                                     $message = 'Reply was successful.';
                                                                 } else {
                                                                     $status = 'error';
                                                                     $message = 'An error occured, please try again.';
                                                                 }
-                                                                $commentreply = $this->CommentReplysTable->find()->where(['comment_id' => $this->request->data('comment_id')])
+                                                                $commentreply = $this->CommentReplys->find()->where(['comment_id' => $this->request->data('comment_id')])
                                                                         ->contain(['Users.Photos' => function($q) {
                                                                         $q->order(['avatar' => 'DESC']);
                                                                         return $q;
@@ -575,8 +575,8 @@ class NetworksController extends AppController {
                                                                                 $imageFileName = $setNewFileName . '.' . $ext;
                                                                             }
                                                                         }
-                                                                        $particularRecord = $this->PhotosTable->newEntity();
-                                                                        $getFormvalue = $this->PhotosTable->patchEntity($particularRecord, $this->request->data);
+                                                                        $particularRecord = $this->Photos->newEntity();
+                                                                        $getFormvalue = $this->Photos->patchEntity($particularRecord, $this->request->data);
 
                                                                         if (!empty($this->request->data['file']['name'])) {
                                                                             $getFormvalue->avatar = $imageFileName;
@@ -586,12 +586,12 @@ class NetworksController extends AppController {
                                                                             $getFormvalue->user_id = $this->Auth->user('id');
                                                                         }
 
-                                                                        if ($this->PhotosTable->save($getFormvalue)) {
+                                                                        if ($this->Photos->save($getFormvalue)) {
                                                                             $status = 'success';
                                                                         } else {
                                                                             $status = 'error';
                                                                         }
-                                                                        $img = $this->PhotosTable->find()->where(['user_id' => $this->Auth->user('id')])->first();
+                                                                        $img = $this->Photos->find()->where(['user_id' => $this->Auth->user('id')])->first();
                                                                         $this->set("img", $img);
                                                                         $this->set("status", $status);
                                                                         $this->set('_serialize', ['status', 'img']);
@@ -618,8 +618,8 @@ class NetworksController extends AppController {
                                                                                 $imageFileName = $setNewFileName . '.' . $ext;
                                                                             }
                                                                         }
-                                                                        $particularRecord = $this->CertificatesTable->newEntity();
-                                                                        $getFormvalue = $this->CertificatesTable->patchEntity($particularRecord, $this->request->data);
+                                                                        $particularRecord = $this->Certificates->newEntity();
+                                                                        $getFormvalue = $this->Certificates->patchEntity($particularRecord, $this->request->data);
                                                                         if (!empty($this->request->data['file']['name'])) {
                                                                             $getFormvalue->avatar = $imageFileName;
                                                                             $getFormvalue->size = $this->request->data['file']['size'];
@@ -628,12 +628,12 @@ class NetworksController extends AppController {
                                                                             $getFormvalue->user_id = $this->Auth->user('id');
                                                                         }
 
-                                                                        if ($this->CertificatesTable->save($getFormvalue)) {
+                                                                        if ($this->Certificates->save($getFormvalue)) {
                                                                             $status = 'success';
                                                                         } else {
                                                                             $status = 'error';
                                                                         }
-                                                                        $cert = $this->CertificatesTable->find()->where(['user_id' => $this->Auth->user('id')])->first();
+                                                                        $cert = $this->Certificates->find()->where(['user_id' => $this->Auth->user('id')])->first();
                                                                         $this->set("cert", $cert);
                                                                         $this->set("status", $status);
                                                                         $this->set('_serialize', ['status', 'img']);

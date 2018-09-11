@@ -6,7 +6,7 @@ use Cake\Routing\Route\DashedRoute;
 Router::plugin(
     'Career3D',
     ['path' => '/career3-d'],
-    function (RouteBuilder $routes) {
+    function ($routes) {
         $routes->fallbacks(DashedRoute::class);
     }
 );

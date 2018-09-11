@@ -3,7 +3,7 @@
 ?>
 <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b>Admin</b>LTE</a>
+        <a href="index2.html" class="logo"><b>Career</b>3D</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -26,7 +26,7 @@
                       <li><!-- start message -->
                         <a href="#">
                           <div class="pull-left">                
-                          <?php echo $this->Html->image('Career3D.mentor/user2-160x160.jpg',['class'=>'img-circle','alt'=>"User Image"]);?>
+                          <?php echo $this->Html->image('Career3D.afro.jpg',['class'=>'img-circle','alt'=>"User Image"]);?>
                           </div>
                           <h4>
                             Support Team
@@ -204,16 +204,16 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">                  
-                  <?php echo $this->Html->image('Career3D.mentor/user2-160x160.jpg',['class'=>'user-image','alt'=>"User Image"]);?>                                                   
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <?php echo $this->Html->image('Career3D.afro.jpg',['class'=>'user-image','alt'=>"User Image"]);?>                                                   
+                  <span class="hidden-xs"><?php echo $user->name;?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <?php echo $this->Html->image('Career3D.mentor/user2-160x160.jpg',['class'=>'img-circle','alt'=>"User Image"]);?>                                                  
+                    <?php echo $this->Html->image('Career3D.afro.jpg',['class'=>'img-circle','alt'=>"User Image"]);?>                                                  
                     <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
+                      <?php echo $user->name;?>
+                      <small></small>
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -222,7 +222,7 @@
                       <a href="#">Followers</a>
                     </div>
                     <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
+                      <a href="#"></a>
                     </div>
                     <div class="col-xs-4 text-center">
                       <a href="#">Friends</a>

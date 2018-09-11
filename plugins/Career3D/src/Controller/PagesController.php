@@ -16,24 +16,17 @@ use LearnositySdk\Request\Init;
 use LearnositySdk\Request\DataApi;
 use Cake\Mailer\Email as m;
 
-/**
- * Users Controller
- *
- * @property \Career3D\Model\Table\UsersTable $Users
- */
+
 class PagesController extends AppController {
 
     public function beforeFilter(\Cake\Event\Event $event) {
+       
         parent::beforeFilter($event);
-        $this->Auth->allow(['register','resetpass','sendmessage','careerinfo']);
-        $this->UsersTable = TableRegistry::get('Career3D.Users');
-        $this->ProfilesTable = TableRegistry::get('Career3D.Profiles');
-        $this->ProvincesTable = TableRegistry::get('Career3D.Provinces');
-        $this->ProfileCareersTable = TableRegistry::get('Career3D.Profile_Careers');      
+         
+        $this->Auth->allow(['register','resetpass','sendmessage','careerinfo','index','dashboard','login']);
+        
         $this->viewBuilder()->layout('Career3D.default');
         
-        $province = $this->ProvincesTable->find('list');
-        $this->set('province',$province);
     }
 
     /**
@@ -41,6 +34,16 @@ class PagesController extends AppController {
      *
      * @return \Cake\Network\Response|null
      */
+    
+    public function index() {
+      
+        $careers = $this->Careers->find('list');
+        $group = $this->UserGroups->find('list');
+        $user = $this->Users->newEntity();
+        $this->set('careers', $careers);
+        $this->set('users', $user);
+        $this->set('group', $group);
+    }
     
     public function careerinfo($id) {
         $this->careerTable = $this->viewVars['CareersTable'];
@@ -50,21 +53,62 @@ class PagesController extends AppController {
        
     }
     
+    public function dashboard() {
+        if($this->Auth->user('id')){
+           return $this->redirect(['controller' => 'Users','action' => 'dashboard']); 
+        }else{
+           return $this->redirect(['action' => 'index']);  
+        }  
+        
+    }
+    
+    public function login() {
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            $this->Auth->setUser($user);
+            switch ($this->Auth->user('user_group_id')) {
+                case 1:
+                    if ($this->Auth->user('status') === 'In-ative') {
+                        $this->Flash->error(__('This account has been blocked, please contact Admin for assistance.'));
+                        return $this->redirect(['action' => 'index']);
+                    } else {
+                        return $this->redirect(['action' => 'dashboard']);
+                    }
+                    break;
+                case 3:
+                    if ($this->Auth->user('status') === 'In-ative') {
+                        $this->Flash->error(__('This account has been blocked, please contact Admin for assistance.'));
+                        return $this->redirect(['action' => 'dashboard']);
+                    } else {
+                        return $this->redirect(['controller' => 'Mentors', 'action' => 'dashboard']);
+                    }
+                    break;
+                case 2:
+                    if ($this->Auth->user('status') === 'In-ative') {
+                        $this->Flash->error(__('This account has been blocked, please contact Admin for assistance.'));
+                        return $this->redirect(['action' => 'dashboard']);
+                    } else {
+                        return $this->redirect(['controller' => 'Admin', 'action' => 'dashboard']);
+                    }
+                    break;    
+                default:
+                    $this->Flash->error(__("Invalid email or password. Make sure your email and password is correct and then you try again."));
+                    return $this->redirect(['action' => 'index']);
+            }
+        }
+    }
+    
     public function register() {
         if ($this->request->is('ajax')) {
-            $profile = $this->ProfilesTable->newEntity();
-            $user = $this->UsersTable->newEntity();
-            $ProCareers = $this->ProfileCareersTable->newEntity();
+            $profile = $this->Profiles->newEntity();
+            $user = $this->Users->newEntity();
             if ($this->request->is('post')) {
-                $user = $this->UsersTable->patchEntity($user, $this->request->data);
-                $this->UsersTable->save($user);
-                $profile->user_id = $user->id;
-                $profile = $this->ProfilesTable->patchEntity($profile, $this->request->data);
-                if (empty($profile->errors())) {
-                    $this->ProfilesTable->save($profile);
-                    $data = ['profile_id'=>$profile->id,'career_id'=>$this->request->data('career_id')];
-                    $Careers = $this->ProfileCareersTable->patchEntity($ProCareers, $data); 
-                    $this->ProfileCareersTable->save($Careers);
+                $user = $this->Users->patchEntity($user, $this->request->data);
+                if (empty($user->errors())) {
+                    $this->Users->save($user);
+                    $profile->user_id = $user->id;
+                    $profile = $this->Profiles->patchEntity($profile, $this->request->data);
+                    $this->Profiles->save($profile);
                     $status = '200';
                     $message = '';
                 } else {
@@ -82,9 +126,10 @@ class PagesController extends AppController {
                     $message = $error_msg;
                 }
             }
-            
             $this->set("status", $status);
             $this->set("message", $message);
+            $this->set('_serialize', ['status', 'message']);
+
             $this->viewBuilder()->layout(false);
         }
     }

@@ -31,22 +31,11 @@ class AdminController extends AppController {
         //$this->Auth->allow(['index', 'register', 'login']);
 
         $this->viewBuilder()->layout('Career3D.mentor-default');
-
-        $img = $this->PhotosTable->find()->where(['user_id' => $this->Auth->user('id')])->order(['avatar' => 'DESC'])->first();
-        $profile = $this->ProfilesTable->find()->where(['user_id' => $this->Auth->user('id')])->contain(['ProfileCareers', 'Provinces'])->first();
-
-        $province = $this->ProvincesTable->find('list');
-        if (empty($img)) {
-            $this->set('img', 'profile.jpg');
-        } else {
-            $this->set('img', $img);
-        }
-
-        $mcount = $this->userMsgcount($this->Auth->user('id'));
-
-        $this->set('profile', $profile);
-        $this->set('province', $province);
-        $this->set('mcount', $mcount);
+        $this->set('img',$this->PhotosTable->find()->where(['user_id' => $this->Auth->user('id')])->order(['avatar' => 'DESC'])->first());
+        $this->set('profile',$this->ProfilesTable->find()->where(['user_id' => $this->Auth->user('id')])->contain(['Careers', 'Provinces'])->first());
+        $this->set('user' , $this->UsersTable->get($this->Auth->user('id')));        
+        $this->set('mcount', $this->userMsgcount($this->Auth->user('id')));
+        
     }
 
     /**

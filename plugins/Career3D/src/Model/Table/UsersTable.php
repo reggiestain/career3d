@@ -63,13 +63,22 @@ class UsersTable extends Table {
         $this->hasMany('Career3D.UserMessages', [
             'className' => 'Career3D.UserMessages'
         ]);
+        
+        $this->belongsTo('Career3D.UserGroups', [
+            'className' => 'Career3D.UserGroups',
+            'foreignKey' => 'user_group_id',
+            'joinType' => 'INNER'
+        ]);
 
     }
 
     public function validationDefault(Validator $validator) {
         $validator->notEmpty('firstname', 'First name is required.')
-                ->notEmpty('surname', 'Surname is required.')                
-                ->notEmpty('mobile', 'Mobile number is required.')                
+                  ->notEmpty('surname', 'Surname is required.')                
+                  ->notEmpty('mobile', 'Mobile number is required.')       
+                  ->notEmpty('user_group_id', 'Registration Type is required.')
+                  ->notEmpty('race', 'Race is required.')
+                  ->notEmpty('career_id', 'Career Path is required.')
                 
                 ->add('email', ['unique' => [
                         'rule' => 'validateUnique',

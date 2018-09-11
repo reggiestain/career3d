@@ -6,10 +6,10 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">             
-              <?php echo $this->Html->image('Career3D.mentor/user2-160x160.jpg',['class'=>'img-circle']);?>
+              <?php echo $this->Html->image('Career3D.afro.jpg',['class'=>'img-circle']);?>
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+              <p><?php echo $user->name;?></p>
 
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -62,28 +62,33 @@
               </a>
             </li>
             <li class="treeview">
+              <?php if($user->user_group_id == 2) {?>
               <a href="#">
                 <i class="fa fa-plus"></i>
                 <span>Careers</span>
                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
+              </a>              
               <ul class="treeview-menu">
                 <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/admin/index');?>"><i class="fa fa-circle-o"></i> All Careers</a></li>
                 <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/admin/create');?>"><i class="fa fa-circle-o"></i> Create Career</a></li>
                 <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
               </ul>
+              <?php } ?>  
+              
             </li>
             <li class="treeview">
+             <?php if($user->user_group_id == 3) {?>
               <a href="#">
                 <i class="fa fa-pie-chart"></i>
                 <span>Programs</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> All Programs</a></li>
-                <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Create Program</a></li>
+                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentor/list_progam');?>"><i class="fa fa-circle-o"></i> All Programs</a></li>
+                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentor/create_program');?>"><i class="fa fa-circle-o"></i> Create Program</a></li>
                 <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
               </ul>
+             <?php } ?>
             </li>
             <!--
             <li class="treeview">

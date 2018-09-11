@@ -51,7 +51,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     //$routes->connect('/', ['controller' => 'Users', 'action' => 'home']);
     
-    $routes->connect('/', ['plugin' => 'Career3D', 'controller' => 'users', 'action' => 'index']);
+    $routes->connect('/', ['plugin' => 'Career3D', 'controller' => 'Pages', 'action' => 'index']);
     
 
     /**

@@ -493,12 +493,20 @@ use Cake\Routing\Router;
                 </div>
                 <div class="row">
                 <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6">
-                        <label for="gender" class="form-label">Race</label>    
+                        <label for="race" class="form-label">Race</label>    
                         <?php
                         $race = ['Black'=>'Black','Coloured'=>'Coloured','Indian'=>'Indian','White'=>'White','Other'=>'Other'];
                         echo $this->Form->select('race', $race, ['empty' => '--Choose One--', 'class' => 'form-control', 'label' => false, 'required' => false, 'error' => true]);
                         ?>
                 </div>
+                    
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                        <label for="reg-type" class="form-label">Registration Type</label>    
+                        <?php
+                         echo $this->Form->select('user_group_id', $group, ['empty' => '--Choose One--', 'class' => 'form-control', 'label' => false, 'required' => false, 'error' => true]);
+                        ?>
+                </div>
+                    
                 </div>    
                 <div class="row">
                     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6">
@@ -727,7 +735,7 @@ use Cake\Routing\Router;
         $('#reg-form').submit(function (event) {
             event.preventDefault();
             var formData = $("#reg-form").serialize();
-            var url = "<?php echo Router::url('/career3-d/pages/register'); ?>";
+            var url = "<?php echo Router::url('/career3-d/users/register'); ?>";
             $.ajax({
                 url: url,
                 type: "POST",
@@ -735,7 +743,7 @@ use Cake\Routing\Router;
                 data: formData,
                 success: function (data, textStatus, jqXHR)
                 {
-                    if (data === '200') {
+                    if (data == '200') {
                         $("#regModal").modal('toggle');
                         $("#loginModal").modal();
                         $(".log-alert").html("<div class='alert alert-success'>\n\
