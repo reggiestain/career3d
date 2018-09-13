@@ -28,6 +28,6 @@ if($status === '300'){
     foreach( $message as $messages){
       echo "<div class='alert-div alert alert-danger fade in alert-dismissable' style='width:500px;margin-bottom:10px'>"
           . "<a class='close' href='#' data-dismiss='alert' aria-label='close' title='close'>×</a>"
-          . "<strong>Error! </strong>". $messages."</div>";  
+          . "<strong>Warning! </strong>". $messages."</div>";  
     }      
 }

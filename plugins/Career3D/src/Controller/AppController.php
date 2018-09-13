@@ -47,6 +47,7 @@ class AppController extends BaseController {
         $this->loadModel('Career3D.Messages');
         $this->loadModel('Career3D.Message_Reply');
         $this->loadModel('Career3D.UserGroups');  
+        $this->loadModel('Career3D.Tests');
         
 
         $this->set('profileSearch', $this->Profiles->find('all'));

@@ -84,8 +84,30 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentor/list_progam');?>"><i class="fa fa-circle-o"></i> All Programs</a></li>
-                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentor/create_program');?>"><i class="fa fa-circle-o"></i> Create Program</a></li>
+                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/list_progam');?>"><i class="fa fa-circle-o"></i> All Programs</a></li>
+                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/create_program');?>"><i class="fa fa-circle-o"></i> Create Program</a></li>
+                <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
+              </ul>
+                
+              <a href="#">
+                <i class="fa fa-file-word-o" aria-hidden="true"></i>
+                <span>Contents</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/list_progam');?>"><i class="fa fa-circle-o"></i> All content</a></li>
+                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/create_program');?>"><i class="fa fa-circle-o"></i> Create Create</a></li>
+                <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
+              </ul>
+                
+              <a href="#">
+                <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+                <span>Tests</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/tests/index');?>"><i class="fa fa-circle-o"></i> All Test</a></li>
+                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/tests/add');?>"><i class="fa fa-circle-o"></i> Create Test</a></li>
                 <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
               </ul>
              <?php } ?>

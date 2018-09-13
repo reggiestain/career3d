@@ -21,40 +21,6 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\Routing\Router;
 ?>
 
-<style>
-    
-.scrollbar
-{
-	
-	float: left;
-	height: 800px;
-	width: 100%;
-	background: #F5F5F5;
-	overflow-y: scroll;
-	
-}
-
-#style-1::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
-}
-
-#style-1::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F5F5F5;
-}
-
-#style-1::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #555;
-}
-</style>
-
 <div class="container">  
     <div style="padding-top:50px;"> </div>
     <div class="row">

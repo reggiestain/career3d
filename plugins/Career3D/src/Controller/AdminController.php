@@ -56,7 +56,6 @@ class AdminController extends AppController {
     }
 
     public function create() {
-        $this->careerTable = $this->viewVars['CareersTable'];
         $career = $this->careerTable->newEntity();
         if ($this->request->is('post')) {            
             $careerdata = $this->careerTable->patchEntity($career, $this->request->data);

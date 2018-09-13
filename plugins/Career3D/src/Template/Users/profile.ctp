@@ -21,7 +21,7 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\Routing\Router;
 
 ?>
-<div class="mainbody container-fluid">
+<div class="container">
     <div class="row">
         <div style="padding-top:50px;"> </div>
         <div class="col-md-3 profile-sec">
@@ -96,6 +96,8 @@ use Cake\Routing\Router;
                     </span>
                 </div>
             </div>
+            <div class="scrollbar" id="style-2">
+            <div class="force-overflow"></div>
             <div class="panel panel-success">
                 <div class="panel-heading">General Information</div>
                 <div class="panel-body">                    
@@ -103,44 +105,44 @@ use Cake\Routing\Router;
                         <div class="col-md-12">                             
                             <div class="high-alert"></div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Firstname</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Firstname</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $profile->firstname;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Surname</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Surname</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $profile->surname;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Mobile</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Mobile</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $profile->mobile;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Email</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Email</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $profile->email;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Gender</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Gender</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $profile->gender;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Birth Date</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Birth Date</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $profile->birth_date;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Career</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Career</strong></div>
+                                <div class="col-sm-9">
                                 <?php 
                                 if(!empty($profile->careers)){
                                    echo $profile->careers[0]->name;
@@ -149,21 +151,21 @@ use Cake\Routing\Router;
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Province</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Province</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $profile->province->name;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Drivers License</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Drivers License</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $profile->drivers_lic;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-2 col-sm-9">
                                     <div class="pull-right">
-                                        <button type="button" id="<?php echo $profile->id;?>" class="btn btn-primary edit-personal">Edit</button>
+                                        <button type="button" id="<?php echo $profile->id;?>" class="btn btn-primary btn-sm edit-personal">Edit</button>
                                     </div>
                                 </div>
                             </div>
@@ -177,39 +179,39 @@ use Cake\Routing\Router;
                         <div class="col-md-12">                             
                             <div class="high-alert"></div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Address</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Address</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $address->line_1;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Street</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Street</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $address->line_2;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>City</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>City</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $address->city;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Province</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Province</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $address->province->name;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Post Code</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Post Code</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $address->post_code;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-2 col-sm-9">
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-primary edit-address" id="<?php echo $address->id;?>">Edit</button>
+                                        <button type="submit" class="btn btn-primary btn-sm edit-address" id="<?php echo $address->id;?>">Edit</button>
                                     </div>
                                 </div>
                             </div>
@@ -227,42 +229,43 @@ use Cake\Routing\Router;
                             <div class="address-alert"></div>
                             <?php echo $this->Form->create(null,['id'=>'address-form','url'=>['controller' => 'users', 'action' =>'saveaddress']]);?>                                        
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Address</strong></label>
-                                <div class="col-sm-10">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Address</strong></label>
+                                <div class="col-sm-9">
                                     <input type="text" name="line_1" placeholder="Address" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Street</strong></label>
-                                <div class="col-sm-10">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Street</strong></label>
+                                <div class="col-sm-9">
                                     <input type="text" placeholder="Street" name="line_2" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>City</strong></label>
-                                <div class="col-sm-10">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>City</strong></label>
+                                <div class="col-sm-9">
                                     <input type="text" placeholder="City" name="city" class="form-control">
                                 </div>
                             </div>
 
                             <!-- Text input-->
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Province</strong></label>
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Province</strong></label>
                                 <div class="col-sm-4">
                                   <?php           
                                  echo $this->Form->select('province_id',$province, ['empty' => '--Choose One--','class'=>'form-control','label'=>false,'required'=>false, 'error' => true]);
                                  ?>
                                 </div>
 
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Postcode</strong></label>
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Postcode</strong></label>
                                 <div class="col-sm-4">
                                     <input type="text" placeholder="Post Code"name="post_code" class="form-control">
                                 </div>
                             </div>
+                            
                             <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-2 col-sm-9">
                                     <div class="pull-right">                     
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary btn-sm">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -282,35 +285,35 @@ use Cake\Routing\Router;
                         <div class="col-md-12">                             
                             <div class="high-alert"></div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>School</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>School</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $highschool->school;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Course</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Course</strong></div>
+                                <div class="col-sm-9">
                                 <?php foreach($highschool->subjects as $highschools){?>
                                 <?php echo $highschools->name.', ';?>    
                                 <?php };?>    
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Start Date</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Start Date</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $highschool->start_date;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Start Date</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Start Date</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $highschool->end_date;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-2 col-sm-9">
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-primary edit-high" id="<?php echo $highschool->id;?>">Edit</button>
+                                        <button type="submit" class="btn btn-primary btn-sm edit-high" id="<?php echo $highschool->id;?>">Edit</button>
                                     </div>
                                 </div>
                             </div>
@@ -327,35 +330,35 @@ use Cake\Routing\Router;
                         <div class="col-md-12" id="add-high" style="display:none">                             
                             <div class="high-alert"></div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>School</strong></label>
-                                <div class="col-sm-10">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>School</strong></label>
+                                <div class="col-sm-9">
                                     <input type="text" name="school" class="form-control">
 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Subject</strong></label>
-                                <div class="col-sm-10">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Subject</strong></label>
+                                <div class="col-sm-9">
                                  <?php           
                                  echo $this->Form->select('subject_id',$subject, ['empty' => '--Choose One--','class'=>'form-control multiselect-ui','label'=>false,'required'=>false, 'error' => true,'multiple'=>'multiple','style'=>'width:500px !important']);
                                  ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                            <label class="col-sm-2 control-label" for="textinput"><strong>Certificate</strong></label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 control-label" for="textinput"><strong>Certificate</strong></label>
+                            <div class="col-sm-9">
                             <a href="#" class="high-cert">Upload Certificate</a>   
                             </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Start Date</strong></label>
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Start Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                         <input type="text" placeholder="" name="start_date" id="start-date" class="form-control">
                                     </div>
                                 </div>
-                                <label class="col-sm-2 control-label" for="textinput"><strong>End Date</strong></label>
+                                <label class="col-sm-3 control-label" for="textinput"><strong>End Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
@@ -364,10 +367,10 @@ use Cake\Routing\Router;
                                 </div>
                             </div>    
                             <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-2 col-sm-9">
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-default">Cancel</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="button" class="btn btn-default btn-sm add-high">Cancel</button>
+                                        <button type="submit" class="btn btn-primary btn-sm">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -388,35 +391,35 @@ use Cake\Routing\Router;
                     <?php foreach ($tertiary as $tertiary):?>
                     <div class="row custom-row">                        
                         <div class="col-md-12">                             
-                            <div class="ter-alert"></div>
+                            <div class="ter-1-alert"></div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Institution</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Institution</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $tertiary->institution;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Course</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Course</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $tertiary->course;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Start Date</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Start Date</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $tertiary->start_date;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2"><strong>Start Date</strong></div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-3"><strong>Start Date</strong></div>
+                                <div class="col-sm-9">
                                 <?php echo $tertiary->end_date;?>  
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-2 col-sm-9">
                                     <div class="pull-right">
-                                        <button type="button" class="btn btn-primary edit-ter" id="<?php echo $tertiary->id;?>">Edit</button>
+                                        <button type="button" class="btn btn-primary btn-sm edit-ter" id="<?php echo $tertiary->id;?>">Edit</button>
                                     </div>
                                 </div>
                             </div>
@@ -425,33 +428,132 @@ use Cake\Routing\Router;
                     <br>
                     <?php endforeach;?>
                     <div class="row">
-                        <?php echo $this->Form->create(null,['id'=>'ter-form','url'=>['controller' => 'users', 'action' => 'savetertiary']]);?>                
+                        <?php echo $this->Form->create(null,['id'=>'ter-2-form','url'=>['controller' => 'users', 'action' => 'savetertiary']]);?>                
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <p class="h5"><a href="#" class="add-high"><span class="fa fa-plus"></span> Add tertiary education</a></p>                        
                         </div>                        
                         <div class="col-md-12" id="add-high" style="display:none">                             
-                            <div class="ter-alert"></div>
+                            <div class="ter-2-alert"></div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Institution</strong></label>
-                                <div class="col-sm-10">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Institution</strong></label>
+                                <div class="col-sm-9">
                                     <input type="text" name="institution" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Course</strong></label>
-                                <div class="col-sm-10">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Course</strong></label>
+                                <div class="col-sm-9">
                                     <input type="text" name="course" class="form-control"> 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Start Date</strong></label>
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Start Date</strong></label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        <input type="text" placeholder="" name="start_date" id="start-date" class="form-control">
+                                    </div>
+                                </div>
+                             </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>End Date</strong></label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        <input type="text" placeholder="" name="end_date" id="end-date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="form-group row">
+                                <div class="col-sm-offset-2 col-sm-9">
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-default btn-sm add-high">Cancel</button>
+                                        <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <?php echo $this->Form->end();?>
+                    </div>
+                 
+                 <?php }?>     
+                </div>
+                <div class="panel-footer">
+
+                </div>
+            </div>
+
+            <div class="panel panel-success">
+                <div class="panel-heading">Work Experience</div>
+                <div class="panel-body">
+                 <?php if(!$workexp->isEmpty()){?> 
+                    <?php foreach ($workexp as $workexp):?>
+                    <div class="row custom-row">                        
+                        <div class="col-md-12">                             
+                            <div class="work-alert"></div>
+                            <div class="form-group row">
+                                <div class="col-sm-3"><strong>Company</strong></div>
+                                <div class="col-sm-9">
+                                <?php echo $workexp->company;?>  
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3"><strong>Duties</strong></div>
+                                <div class="col-sm-9">
+                                <?php echo $workexp->duties;?>  
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3"><strong>Start Date</strong></div>
+                                <div class="col-sm-9">
+                                <?php echo $workexp->start_date;?>  
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3"><strong>End Date</strong></div>
+                                <div class="col-sm-9">
+                                <?php echo $workexp->end_date;?>  
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-offset-2 col-sm-9">
+                                    <div class="pull-right">
+                                   <button type="submit" class="btn btn-primary btn-sm edit-ex" id="<?php echo $workexp->id;?>">Edit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>  
+                    <br>
+                    <?php endforeach;?>
+                    <div class="row">
+                        <?php echo $this->Form->create(null,['id'=>'wex-form','url'=>['controller' => 'users', 'action' => 'saveworkex']]);?>                
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p class="h5"><a href="#" class="add-wex"><span class="fa fa-plus"></span> Add work experience</a></p>                        
+                        </div>                        
+                        <div class="col-md-12" id="add-wex" style="display:none">                             
+                            <div class="wex-alert"></div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Company</strong></label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="company" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Duties</strong></label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="duties" id="duties"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Start Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                         <input type="text" placeholder="" name="start_date" id="start-date" class="form-control">
                                     </div>
                                 </div>
-                                <label class="col-sm-2 control-label" for="textinput"><strong>End Date</strong></label>
+                                <label class="col-sm-3 control-label" for="textinput"><strong>End Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
@@ -460,7 +562,7 @@ use Cake\Routing\Router;
                                 </div>
                             </div>    
                             <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-2 col-sm-9">
                                     <div class="pull-right">
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -471,42 +573,42 @@ use Cake\Routing\Router;
                     </div>
                  <?php }else{?>  
                     <div class="row custom">
-                        <?php echo $this->Form->create(null,['id'=>'ter-form','url'=>['controller' => 'users', 'action' => 'savetertiary']]);?>                
+                        <?php echo $this->Form->create(null,['id'=>'wex-form','url'=>['controller' => 'users', 'action' => 'saveworkex']]);?>                
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <p class="h5"><a href="#" class="add-high"><span class="fa fa-plus"></span> Add tertiary education</a></p>                        
+                            <p class="h5"><a href="#" class="add-wex"><span class="fa fa-plus"></span> Add work experience</a></p>                        
                         </div>                        
-                        <div class="col-md-12" id="add-high" style="display:none">                             
-                            <div class="ter-alert"></div>
+                        <div class="col-md-12" id="add-wex" style="display:none">                             
+                            <div class="wex-alert"></div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Institution</strong></label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="institution" class="form-control">
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Company</strong></label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="company" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Course</strong></label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="course" class="form-control"> 
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Duties</strong></label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="duties" id="duties"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Start Date</strong></label>
+                                <label class="col-sm-3 control-label" for="textinput"><strong>Start Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                        <input type="text" placeholder="" name="start_date" id="start-date" class="form-control">
+                                        <input type="text" placeholder="" name="start_date" id="start-datew" class="form-control">
                                     </div>
                                 </div>
-                                <label class="col-sm-2 control-label" for="textinput"><strong>End Date</strong></label>
+                                <label class="col-sm-3 control-label" for="textinput"><strong>End Date</strong></label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                        <input type="text" placeholder="" name="end_date" id="end-date" class="form-control">
+                                        <input type="text" placeholder="" name="end_date" id="end-datew" class="form-control">
                                     </div>
                                 </div>
                             </div>    
                             <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-2 col-sm-9">
                                     <div class="pull-right">
                                         <button type="submit" class="btn btn-default">Cancel</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -522,148 +624,7 @@ use Cake\Routing\Router;
 
                 </div>
             </div>
-
-            <div class="panel panel-success">
-                <div class="panel-heading">Work Experience</div>
-                <div class="panel-body">
-                 <?php if(!$workexp->isEmpty()){?> 
-                    <?php foreach ($workexp as $workexp):?>
-                    <div class="row custom-row">                        
-                        <div class="col-md-12">                             
-                            <div class="ter-alert"></div>
-                            <div class="form-group row">
-                                <div class="col-sm-2"><strong>Company</strong></div>
-                                <div class="col-sm-10">
-                                <?php echo $workexp->company;?>  
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-2"><strong>Duties</strong></div>
-                                <div class="col-sm-10">
-                                <?php echo $workexp->duties;?>  
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-2"><strong>Start Date</strong></div>
-                                <div class="col-sm-10">
-                                <?php echo $workexp->start_date;?>  
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-2"><strong>End Date</strong></div>
-                                <div class="col-sm-10">
-                                <?php echo $workexp->end_date;?>  
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="pull-right">
-                                   <button type="submit" class="btn btn-primary edit-ex" id="<?php echo $workexp->id;?>">Edit</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                    </div>  
-                    <br>
-                    <?php endforeach;?>
-                    <div class="row">
-                        <?php echo $this->Form->create(null,['id'=>'wex-form','url'=>['controller' => 'users', 'action' => 'saveworkex']]);?>                
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <p class="h5"><a href="#" class="add-wex"><span class="fa fa-plus"></span> Add work experience</a></p>                        
-                        </div>                        
-                        <div class="col-md-12" id="add-wex" style="display:none">                             
-                            <div class="wex-alert"></div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Company</strong></label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="company" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Duties</strong></label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" name="duties" id="duties"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Start Date</strong></label>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                        <input type="text" placeholder="" name="start_date" id="start-date" class="form-control">
-                                    </div>
-                                </div>
-                                <label class="col-sm-2 control-label" for="textinput"><strong>End Date</strong></label>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                        <input type="text" placeholder="" name="end_date" id="end-date" class="form-control">
-                                    </div>
-                                </div>
-                            </div>    
-                            <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="pull-right">
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <?php echo $this->Form->end();?>
-                    </div>
-                 <?php }else{?>  
-                    <div class="row custom">
-                        <?php echo $this->Form->create(null,['id'=>'wex-form','url'=>['controller' => 'users', 'action' => 'saveworkex']]);?>                
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <p class="h5"><a href="#" class="add-wex"><span class="fa fa-plus"></span> Add work experience</a></p>                        
-                        </div>                        
-                        <div class="col-md-12" id="add-wex" style="display:none">                             
-                            <div class="ter-alert"></div>
-                            <div class="wex-alert"></div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Company</strong></label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="company" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Duties</strong></label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" name="duties" id="duties"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 control-label" for="textinput"><strong>Start Date</strong></label>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                        <input type="text" placeholder="" name="start_date" id="start-datew" class="form-control">
-                                    </div>
-                                </div>
-                                <label class="col-sm-2 control-label" for="textinput"><strong>End Date</strong></label>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                        <input type="text" placeholder="" name="end_date" id="end-datew" class="form-control">
-                                    </div>
-                                </div>
-                            </div>    
-                            <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="pull-right">
-                                        <button type="submit" class="btn btn-default">Cancel</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <?php echo $this->Form->end();?>
-                    </div>  
-                 <?php }?>     
-                </div>
-                <div class="panel-footer">
-
-                </div>
+            
             </div>
             <!-- Register Modal -->
             <div id="editModal" class="modal fade" role="dialog">
@@ -785,10 +746,10 @@ use Cake\Routing\Router;
                 });
             });
             //Save tertiary education
-            $('#ter-form').submit(function (event) {
+            $('#ter-2-form').submit(function (event) {
                 event.preventDefault();
-                var formData = $("#ter-form").serialize();
-                var url = $("#ter-form").attr("action");
+                var formData = $(this).serialize();
+                var url = $(this).attr("action");
                 $.ajax({
                     url: url,
                     type: "POST",
@@ -796,10 +757,10 @@ use Cake\Routing\Router;
                     data: formData,
                     success: function (data, textStatus, jqXHR)
                     {
-                        $('.ter-alert').html(data);
-                        setTimeout(function () {
-                            location.reload(1);
-                        }, 5000);
+                        $('.ter-2-alert').html(data);
+                        //setTimeout(function () {
+                           // location.reload(1);
+                       // }, 5000);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         alert(errorThrown);

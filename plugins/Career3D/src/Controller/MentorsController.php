@@ -50,21 +50,37 @@ class MentorsController extends AppController {
        
     }
 
-    public function profile() {
-        $this->dashboard();
-        $subject = $this->Subjects->find('list');
-        $highschool = $this->HighSchools->find('all')->where(['user_id' => $this->Auth->user('id')])->contain(['Subjects']);
-        $address = $this->Addresses->find('all')->where(['user_id' => $this->Auth->user('id')])->contain(['Provinces']);
-        $tertiary = $this->Tertiaries->find('all')->where(['user_id' => $this->Auth->user('id')]);
-        $workexp = $this->WorkExps->find('all')->where(['user_id' => $this->Auth->user('id')]);
-
-
-        $this->set('subject', $subject);
-        $this->set('address', $address);
-        $this->set('tertiary', $tertiary);
-        $this->set('highschool', $highschool);
-        $this->set('workexp', $workexp);
+    public function listTests() {
+        $test = $this->Tests->find('all')->where(['user_id'=>$this->Auth->user('id')]);
+        $this->set('test',$test);
     }
+    
+    public function createTest() {
+        
+        $test = $this->Tests->newEntity();
+        if ($this->request->is('post')) {            
+            $testdata = $this->Tests->patchEntity($test, $this->request->data);
+            if (empty($test->errors())) {
+                $testdata->user_id = $this->Auth->user('id');
+                $this->Tests->save($testdata);
+                $this->Flash->success(__('Your test has been saved.'));
+                return $this->redirect(['action' => 'list_tests']);
+            } else {
+            $this->Flash->error(__('Unable to add test'));  
+          }           
+        }
+        $this->set('test',$test);
+    }
+    
+    public function editTest() {
+        
+    }
+    
+    public function deleteTests() {
+        
+    }
+    
+    
 
     public function savehighschool() {
         if ($this->request->is('ajax')) {

@@ -27,14 +27,16 @@ use Cake\Network\Exception\NotFoundException;
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        Tests Table
+        <small>View</small>
       </h1>
+      <!--  
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
         <li class="active">Data tables</li>
       </ol>
+      -->
     </section>
 
     <!-- Main content -->
@@ -43,7 +45,7 @@ use Cake\Network\Exception\NotFoundException;
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Careers Table</h3>
+              <h3 class="box-title">Tests Table</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -56,14 +58,14 @@ use Cake\Network\Exception\NotFoundException;
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($career as $careers):?>    
+                <?php foreach ($test as $tests):?>    
                 <tr>
-                  <td><?php echo $careers->name;?> </td>
-                  <td><?php echo $careers->description;?></td>
+                  <td><?php echo $tests->name;?> </td>
+                  <td><?php echo $tests->description;?></td>
                   <td>
                    <a href="#" class="btn btn-primary">View</a>
-                   <a href="<?php echo Cake\Routing\Router::url('/career3-d/admin/edit/'.$careers->id);?>" class="btn btn-success">Edit</a>
-                   <a href="<?php echo Cake\Routing\Router::url('/career3-d/admin/delete');?>" class="btn btn-danger">Delete</a>
+                   <a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/edit_test/'.$tests->id);?>" class="btn btn-success">Edit</a>
+                   <a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/delete_test');?>" class="btn btn-danger">Delete</a>
                   </td>
                 </tr>
                 <?php endforeach;?>
