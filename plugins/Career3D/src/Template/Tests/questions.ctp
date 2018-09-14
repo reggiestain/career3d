@@ -18,6 +18,7 @@ use Cake\Core\Configure;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
+use Cake\Routing\Router;
 
 ?>
 
@@ -80,7 +81,7 @@ use Cake\Network\Exception\NotFoundException;
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                <a class="ques-opt" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" id="1">
                                                     <!--<i class="fa fa-chec fa-spin fa-3x fa-fw" aria-hidden="true"></i>
                                                     <span class="sr-only">Refreshing...</span>-->
                                                     <span style="margin-right:10px">
@@ -94,7 +95,7 @@ use Cake\Network\Exception\NotFoundException;
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                <a class="ques-opt" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" id="2">
                                                     <span style="margin-right:10px">
                                                         <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                                     </span>Multiple Checkbox</a>
@@ -105,7 +106,7 @@ use Cake\Network\Exception\NotFoundException;
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion"  href="#collapseThree">
+                                                <a class="ques-opt" data-toggle="collapse" data-parent="#accordion"  href="#collapseThree" id="3">
                                                     <span style="margin-right:10px"> 
                                                         <i class="fa fa-bars" aria-hidden="true"></i>    
                                                     </span>Match the Folllowing</a>
@@ -115,7 +116,7 @@ use Cake\Network\Exception\NotFoundException;
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                <a class="ques-opt" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" id="4">
                                                     <span style="margin-right:10px">
                                                         <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                                                         <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
@@ -126,7 +127,7 @@ use Cake\Network\Exception\NotFoundException;
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                <a class="ques-opt" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" id="5">
                                                     <span style="margin-right:10px">
                                                         <i class="fa fa-file-o" aria-hidden="true"></i>
                                                     </span>Fill in the Blanks</a>
@@ -136,7 +137,7 @@ use Cake\Network\Exception\NotFoundException;
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                                <a class="ques-opt" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" id="6">
                                                     <span style="margin-right:10px">
                                                         <i class="fa fa-file-text" aria-hidden="true"></i>
                                                     </span>Essay</a>
@@ -150,42 +151,8 @@ use Cake\Network\Exception\NotFoundException;
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Dashboard</h3>
                                     </div>
-                                    <div class="panel-body">
-                                        <div class="panel-collapse collapse in" id="collapseOne">
-                                            <div class="card card-body">
-                                                multiple choice
-                                            </div>
-                                        </div>  
-                                        
-                                        <div class="panel-collapse collapse" id="collapseTwo">
-                                            <div class="card card-body">
-                                                multiple checkbox
-                                            </div>
-                                        </div>  
-                                        
-                                        <div class="panel-collapse collapse" id="collapseThree">
-                                            <div class="card card-body">
-                                                Match the fellowing
-                                            </div>
-                                        </div> 
-                                        
-                                        <div class="panel-collapse collapse" id="collapseFour">
-                                            <div class="card card-body">
-                                                true or false
-                                            </div>
-                                        </div> 
-                                        
-                                        <div class="panel-collapse collapse" id="collapseFive">
-                                            <div class="card card-body">
-                                                fill in the blanks
-                                            </div>
-                                        </div> 
-                                        
-                                        <div class="panel-collapse collapse" id="collapseSix">
-                                            <div class="card card-body">
-                                                Essay
-                                            </div>
-                                        </div> 
+                                    <div class="panel-body question-info">
+
                                     </div>
                                 </div>
                             </div>
@@ -215,6 +182,28 @@ use Cake\Network\Exception\NotFoundException;
 <!-- /.content-wrapper -->
 <script>
     $(document).ready(function () {
+
+        $('.ques-opt').click(function (event) {
+            event.preventDefault();
+            var opt = $(this).attr('id');
+            $.ajax({
+                url: "<?php echo Router::url('career3-d/tests/question_dash/');?>"+opt,
+                type: "GET",
+                asyn: false,
+                beforeSend: function () {
+                    $(".question-info").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
+                },
+
+                success: function (data, textStatus, jqXHR)
+                {                    
+                     $(".question-info").html(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    location.reload();
+                }
+            });
+        });
 
         $('#reg-form').submit(function (event) {
             event.preventDefault();

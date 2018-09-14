@@ -56,9 +56,8 @@ class PagesController extends AppController {
     public function dashboard() {
         if($this->Auth->user('id')){
            return $this->redirect(['controller' => 'Users','action' => 'dashboard']); 
-        }else{
-           return $this->redirect(['action' => 'index']);  
-        }  
+        }
+       return $this->redirect(['action' => 'index']);  
         
     }
     

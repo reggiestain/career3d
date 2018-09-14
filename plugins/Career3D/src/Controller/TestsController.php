@@ -98,6 +98,11 @@ class TestsController extends AppController {
         
     }
     
+    public function questionDash($opt) {
+        $this->set('status',$opt);
+        $this->viewBuilder()->layout(false);
+    }
+    
     public function delete() {
         
     }
