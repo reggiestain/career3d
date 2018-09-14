@@ -65,6 +65,7 @@ use Cake\Network\Exception\NotFoundException;
                   <td>
                    <a href="#" class="btn btn-primary">View</a>
                    <a href="<?php echo Cake\Routing\Router::url('/career3-d/tests/edit/'.$tests->id);?>" class="btn btn-success">Edit</a>
+                   <a href="<?php echo Cake\Routing\Router::url('/career3-d/tests/questions/'.$tests->id);?>" class="btn btn-default">Questions</a>
                    <a href="<?php echo Cake\Routing\Router::url('/career3-d/tests/delete'.$tests->id);?>" class="btn btn-danger">Delete</a>
                   </td>
                 </tr>

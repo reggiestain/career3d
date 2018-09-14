@@ -79,6 +79,25 @@ class TestsController extends AppController {
         
     }
     
+    public function questions($id) {
+        
+        $test = $this->Tests->get($id);
+        if ($this->request->is(['post','put'])) {            
+            $testdata = $this->Tests->patchEntity($test, $this->request->data);
+            if (empty($test->errors())) {
+                $testdata->user_id = $this->Auth->user('id');
+                $this->Tests->save($testdata);
+                $this->Flash->success(__('Your test has been saved.'));
+                return $this->redirect(['action' => 'list_tests']);
+            } else {
+            $this->Flash->error(__('Unable to add test'));  
+          }           
+        }
+        $this->set('test',$test);
+        $this->set('title','Test Questions');
+        
+    }
+    
     public function delete() {
         
     }

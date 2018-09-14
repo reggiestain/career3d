@@ -61,8 +61,9 @@
                 <i class="fa fa-th"></i> <span>Students</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
-            <li class="treeview">
-              <?php if($user->user_group_id == 2) {?>
+            
+             <?php if($user->user_group_id == 2) {?>
+            <li class="treeview" data-toggle="collapse" data-target="#">
               <a href="#">
                 <i class="fa fa-plus"></i>
                 <span>Careers</span>
@@ -73,22 +74,23 @@
                 <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/admin/create');?>"><i class="fa fa-circle-o"></i> Create Career</a></li>
                 <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
               </ul>
-              <?php } ?>  
-              
-            </li>
-            <li class="treeview">
+              </li>
+              <?php } ?>                         
+            
              <?php if($user->user_group_id == 3) {?>
+              <li class="treeview">
               <a href="#">
                 <i class="fa fa-pie-chart"></i>
                 <span>Programs</span>
-                <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-angle-left pull-right" ></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/list_progam');?>"><i class="fa fa-circle-o"></i> All Programs</a></li>
                 <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/create_program');?>"><i class="fa fa-circle-o"></i> Create Program</a></li>
                 <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
               </ul>
-                
+            </li>  
+            <li class="treeview">
               <a href="#">
                 <i class="fa fa-file-word-o" aria-hidden="true"></i>
                 <span>Contents</span>
@@ -99,7 +101,8 @@
                 <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/create_program');?>"><i class="fa fa-circle-o"></i> Create Create</a></li>
                 <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
               </ul>
-                
+             </li>   
+             <li class="treeview">
               <a href="#">
                 <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
                 <span>Tests</span>
@@ -110,8 +113,9 @@
                 <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/tests/add');?>"><i class="fa fa-circle-o"></i> Create Test</a></li>
                 <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
               </ul>
+               </li>
              <?php } ?>
-            </li>
+           
             <!--
             <li class="treeview">
               <a href="#">

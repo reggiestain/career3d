@@ -20,6 +20,23 @@ use Cake\Network\Exception\NotFoundException;
 
 ?>
 
+<style>
+ 
+      #accordion .glyphicon { margin-right:10px; }
+      .panel-collapse>.list-group .list-group-item:first-child {border-top-right-radius: 0;border-top-left-radius: 0;}
+      .panel-collapse>.list-group .list-group-item {border-width: 1px 0;}
+      .panel-collapse>.list-group {margin-bottom: 0;}
+      .panel-collapse .list-group-item {border-radius:0;}
+
+      .panel-collapse .list-group .list-group {margin: 0;margin-top: 10px;}
+      .panel-collapse .list-group-item li.list-group-item {margin: 0 -15px;border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item:last-child {padding-bottom: 0;}
+
+      .panel-collapse div.list-group div.list-group{margin: 0;}
+      .panel-collapse div.list-group .list-group a.list-group-item {border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item {border-top: 1px solid #DDD !important;}   
+</style>
+
 <?php echo $this->element('Career3D.mentor/header');?>
       <!-- Left side column. contains the logo and sidebar -->
 <?php echo $this->element('Career3D.mentor/sidebar');?>  
@@ -63,9 +80,94 @@ use Cake\Network\Exception\NotFoundException;
                   <label>Test Description</label>                
                   <?php echo $this->Form->textarea('description',['templates' => ['inputContainer' => '{{content}}'],'type' => 'text','label' => false,'class'=>'form-control','id'=>'summernote-1','required'=>false, 'error' => true]);?>                 
                 </div> 
+                <div class="form-group">
+                   <h3 class="box-title">Question Types</h3>
+                </div>
+                <div class="form-group">                             
+                                <div class="col-sm-3 col-md-3">
+                                    <div class="panel-group" id="accordion">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                        <!--<i class="fa fa-chec fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+                                                        <span class="sr-only">Refreshing...</span>-->
+                                                        <span style="margin-right:10px">
+                                                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                                                        </span>Multiple Choice</a>
+                                                </h4>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                        <span style="margin-right:10px">
+                                                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                                                        </span>Multiple Checkbox</a>
+                                                </h4>
+                                            </div>
+                                         
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                    <span style="margin-right:10px"> 
+                                                    <i class="fa fa-bars" aria-hidden="true"></i>    
+                                                    </span>Match the Folllowing</a>
+                                                </h4>
+                                            </div>                                           
+                                       </div>
+                                       <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                    <span style="margin-right:10px">
+                                                     <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                                     <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                                                    </span>True or False</a>
+                                                </h4>
+                                            </div>                                           
+                                       </div>
+                                       <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                    <span style="margin-right:10px">
+                                                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                                                    </span>Fill in the Blanks</a>
+                                                </h4>
+                                            </div>                                           
+                                       </div>
+                                       <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                                   <span style="margin-right:10px">
+                                                      <i class="fa fa-file-text" aria-hidden="true"></i>
+                                                   </span>Essay</a>
+                                                </h4>
+                                            </div>                                           
+                                       </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9 col-md-9">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Dashboard</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>Admin Dashboard Accordion List Group Menu</p>
+                                            <div class="alert alert-success"><h3>Yes! It's compatible with BS 3.0.3, 3.1 & 3.2 </h3></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                
-              <div class="box-footer">
-                <button class="btn btn-default">Cancel</button>
+              <div class="row box-footer">
+                
                 <button type="submit" class="btn btn-info pull-right">Submit</button>
               </div> 
               
@@ -143,4 +245,6 @@ use Cake\Network\Exception\NotFoundException;
         });
 
     });
-</script>      
+</script>     
+
+    
