@@ -26,7 +26,7 @@ class TestsController extends AppController {
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
         $this->loadComponent('RequestHandler');
-        $this->Auth->allow(['index', 'register', 'login']);
+        $this->Auth->allow(['*']);
 
         $this->viewBuilder()->layout('Career3D.mentor-default');
         $this->set('img',$this->Photos->find()->where(['user_id' => $this->Auth->user('id')])->order(['avatar' => 'DESC'])->first());
@@ -51,7 +51,7 @@ class TestsController extends AppController {
                 $testdata->user_id = $this->Auth->user('id');
                 $this->Tests->save($testdata);
                 $this->Flash->success(__('Your test has been saved.'));
-                return $this->redirect(['action' => 'list_tests']);
+                return $this->redirect(['action' => 'index']);
             } else {
             $this->Flash->error(__('Unable to add test'));  
           }           

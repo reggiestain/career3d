@@ -120,7 +120,8 @@ use Cake\Routing\Router;
                                                     <span style="margin-right:10px">
                                                         <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                                                         <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-                                                    </span>True or False</a>
+                                                    </span>True or False
+                                                </a>
                                             </h4>
                                         </div>                                           
                                     </div>
@@ -130,7 +131,8 @@ use Cake\Routing\Router;
                                                 <a class="ques-opt" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" id="5">
                                                     <span style="margin-right:10px">
                                                         <i class="fa fa-file-o" aria-hidden="true"></i>
-                                                    </span>Fill in the Blanks</a>
+                                                    </span>Fill in the Blanks
+                                                </a>
                                             </h4>
                                         </div>                                           
                                     </div>
@@ -149,7 +151,7 @@ use Cake\Routing\Router;
                             <div class="col-sm-9 col-md-9">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Dashboard</h3>
+                                        <h2 class="panel-title qeus-dash">Question Dashboard</h2>
                                     </div>
                                     <div class="panel-body question-info">
 
@@ -186,16 +188,16 @@ use Cake\Routing\Router;
         $('.ques-opt').click(function (event) {
             event.preventDefault();
             var opt = $(this).attr('id');
+            var title = $('#'+opt).text();
             $.ajax({
-                url: "<?php echo Router::url('career3-d/tests/question_dash/');?>"+opt,
+                url: "<?php echo Router::url('/career3-d/tests/question_dash/');?>"+opt,
                 type: "GET",
                 asyn: false,
                 beforeSend: function () {
                     $(".question-info").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
                 },
-
                 success: function (data, textStatus, jqXHR)
-                {                    
+                {    $('.qeus-dash').text(title+' Dashboard');                
                      $(".question-info").html(data);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -205,59 +207,8 @@ use Cake\Routing\Router;
             });
         });
 
-        $('#reg-form').submit(function (event) {
-            event.preventDefault();
-            var formData = $("#reg-form").serialize();
-            var url = $("#reg-form").attr("action");
-            $.ajax({
-                url: url,
-                type: "POST",
-                asyn: false,
-                data: formData,
-                success: function (data, textStatus, jqXHR)
-                {
-                    if (data === '200') {
-                        $("#regModal").modal('hide');
-                        $(".log-alert").html("<div class='alert alert-success'>\n\
-                                   <a class='close' href='#' data-dismiss='alert' aria-label='close' title='close'>×</a>\n\
-                                   <strong>Success!</strong> Registration was successful, please login with your email and password.</div>");
-                        $("#loginModal").modal('show');
-                    } else {
-                        $(".reg-alert").html(data);
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert(errorThrown);
-                    location.reload();
-                }
-            });
-        });
-
-        $('#logi-form').submit(function (event) {
-            event.preventDefault();
-            var formData = $("#login-form").serialize();
-            var url = $("#login-form").attr("action");
-            $.ajax({
-                url: url,
-                type: "POST",
-                asyn: false,
-                data: formData,
-                success: function (data, textStatus, jqXHR)
-                {
-                    if (data === '200') {
-                        $("#loginModal").modal('hide');
-                        //window.location.href ="<?php //echo Router::url('career3-d/users/dashboard');?>";
-                    } else {
-                        $(".log-alert").html(data);
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert(errorThrown);
-                    location.reload();
-                }
-            });
-        });
-
+       
+        
     });
 </script>     
 

@@ -734,8 +734,8 @@ use Cake\Routing\Router;
 
         $('#reg-form').submit(function (event) {
             event.preventDefault();
-            var formData = $("#reg-form").serialize();
-            var url = "<?php echo Router::url('/career3-d/users/register'); ?>";
+            var formData = $(this).serialize();
+            var url = "<?php echo Router::url('/career3-d/pages/register'); ?>";
             $.ajax({
                 url: url,
                 type: "POST",

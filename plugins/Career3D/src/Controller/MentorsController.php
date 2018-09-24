@@ -26,7 +26,11 @@ class MentorsController extends AppController {
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
         $this->loadComponent('RequestHandler');
-        $this->Auth->allow(['index', 'register', 'login']);
+        
+        if (empty($this->Auth->user('id'))) {
+            $this->Flash->error(__('Woopsie, you are not authorized to access this area.'));
+            return $this->redirect($this->Auth->logout());
+        }
 
         $this->viewBuilder()->layout('Career3D.Mentor');
         $this->viewBuilder()->layout('Career3D.mentor-default');
@@ -47,7 +51,7 @@ class MentorsController extends AppController {
 
     public function dashboard() {
         
-       
+      $this->set('title', 'Mentor Dashboard'); 
     }
 
     public function listTests() {

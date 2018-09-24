@@ -5,8 +5,8 @@
                 </div>
                 <div class="avatar">
                     <?php 
-                    if($img === 'profile.jpg'){
-                    echo $this->Html->image('Career3D.upload/avatar/'.$img,['class'=>'card-img-top img-circle','alt'=>'Profile image']);
+                    if(empty($img)){
+                    echo $this->Html->image('Career3D.upload/avatar/profile.jpg',['class'=>'card-img-top img-circle','alt'=>'Profile image']);
                     }else{
                     echo $this->Html->image('Career3D.upload/avatar/'.$img->avatar,['class'=>'card-img-top img-circle','alt'=>'Profile image']);    
                     }

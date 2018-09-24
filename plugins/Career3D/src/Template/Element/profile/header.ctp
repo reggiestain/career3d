@@ -264,9 +264,10 @@
                         </li>
                         <li class="dropdown"><a href="#" class="dropdown-toggle head-list" data-toggle="dropdown">
                                 <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                                <?php                                             
-                                if($img === 'profile.jpg'){
-                                echo $this->Html->image('Career3D.upload/avatar/'.$img,['class'=>'img-responsive img-circle','alt'=>'Profile image','style'=>'width:30px;height:30px']);
+                                <?php 
+                
+                                if(empty($img)){
+                                echo $this->Html->image('Career3D.upload/avatar/profile.jpg',['class'=>'img-responsive img-circle','alt'=>'Profile image','style'=>'width:30px;height:30px']);
                                 }else{
                                 echo $this->Html->image('Career3D.upload/avatar/'.$img->avatar,['class'=>'img-responsive img-circle','alt'=>'Profile image','style'=>'width:30px;height:30px']);    
                                 }
@@ -282,8 +283,8 @@
                                         <div class="row">
                                             <div class="col-md-5">
                                             <?php                                             
-                                            if($img === 'profile.jpg'){
-                                            echo $this->Html->image('Career3D.upload/avatar/'.$img,['class'=>'img-responsive','alt'=>'Profile image','style'=>'width:120px;height:120px']);
+                                            if(empty($img)){
+                                            echo $this->Html->image('Career3D.upload/avatar/profile.jpg',['class'=>'img-responsive','alt'=>'Profile image','style'=>'width:120px;height:120px']);
                                             }else{
                                             echo $this->Html->image('Career3D.upload/avatar/'.$img->avatar,['class'=>'img-responsive','alt'=>'Profile image','style'=>'width:120px;height:120px']);    
                                             }
@@ -292,9 +293,9 @@
                                                    <a href="./3X6zm">Change Photo</a></p>-->
                                             </div>
                                             <div class="col-md-7">
-                                                <span><?php echo $profile->name;?></span>
+                                                <span><?php echo $user->name;?></span>
                                                 <p class="text-muted small">
-                                                    <?php echo $profile->email;?></p>
+                                                    <?php echo $user->email;?></p>
                                                 <div class="divider">
                                                 </div>
                                                 <a href="<?php echo Cake\Routing\Router::url('/career3-d/users/profile');?>" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
@@ -311,7 +312,7 @@
                                                     <a href="#" class="btn btn-default btn-sm"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change Passowrd</a>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <a href="<?php echo Cake\Routing\Router::url('/career3-d/users/logout');?>" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
+                                                    <a href="<?php echo Cake\Routing\Router::url('/career3-d/pages/logout');?>" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
                                                 </div>
                                             </div>
                                         </div>

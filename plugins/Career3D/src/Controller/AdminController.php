@@ -22,20 +22,24 @@ use Facebook\Facebook;
  * @property \Career3D\Model\Table\UsersTable $Users
  */
 class AdminController extends AppController {
-    
-    private $careerTable;
-
+   
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
         $this->loadComponent('RequestHandler');
-        //$this->Auth->allow(['index', 'register', 'login']);
-
-        $this->viewBuilder()->layout('Career3D.mentor-default');
-        $this->set('img',$this->PhotosTable->find()->where(['user_id' => $this->Auth->user('id')])->order(['avatar' => 'DESC'])->first());
-        $this->set('profile',$this->ProfilesTable->find()->where(['user_id' => $this->Auth->user('id')])->contain(['Careers', 'Provinces'])->first());
-        $this->set('user' , $this->UsersTable->get($this->Auth->user('id')));        
-        $this->set('mcount', $this->userMsgcount($this->Auth->user('id')));
         
+        if (empty($this->Auth->user('id'))) {
+            $this->Flash->error(__('Woopsie, you are not authorized to access this area.'));
+            return $this->redirect($this->Auth->logout());
+        }
+        
+        //$this->Auth->allow();
+
+        $this->viewBuilder()->layout('Career3D.Mentor');
+        $this->viewBuilder()->layout('Career3D.mentor-default');
+        $this->set('img',$this->Photos->find()->where(['user_id' => $this->Auth->user('id')])->order(['avatar' => 'DESC'])->first());
+        $this->set('profile',$this->Profiles->find()->where(['user_id' => $this->Auth->user('id')])->contain(['Careers', 'Provinces'])->first());
+        $this->set('user' , $this->Users->get($this->Auth->user('id')));        
+        $this->set('mcount', $this->userMsgcount($this->Auth->user('id')));
     }
 
     /**
@@ -44,9 +48,9 @@ class AdminController extends AppController {
      * @return \Cake\Network\Response|null
      */
     
-
     public function dashboard() {
-        
+     
+        $this->set('title', 'Admin Dashboard'); 
     }
     
     public function index() {

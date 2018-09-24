@@ -21,35 +21,32 @@ use Cake\Routing\Router;
 
 ?>
 
-     <?php if($status = 1){ ?>
+     <?php if($status == 1){ ?>
       <div class="card-body">
         Multiple choice  
       </div>
-     <?php }elseif(($status = 2){?>
+     <?php }elseif($status == 2){?>
       <div class="card-body">
-        Multiple choice  
+        Multiple checkbox 
       </div>
      
-     <?php }elseif(($status = 3){?>
+     <?php }elseif($status == 3){?>
       <div class="card-body">
-        Multiple checkbox  
+        Match the following 
       </div>
 
-     <?php }elseif(($status = 4){?>
-      <div class="card-body">
-        Match the following
-      </div>
-     <?php }elseif(($status = 5){?>
+     <?php }elseif($status == 4){?>
       <div class="card-body">
         True or False
       </div>
-     <?php }elseif(($status = 6){?>
+     <?php }elseif($status == 5){?>
       <div class="card-body">
         Fill in the blanks
       </div>
-     <?php }elseif(($status = 5){?>
-     <div class="card-body">
+     <?php }elseif($status == 6){?>
+      <div class="card-body">
         Essay
       </div>
+     
      <?php } ?>
 

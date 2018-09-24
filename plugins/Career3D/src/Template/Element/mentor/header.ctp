@@ -240,7 +240,7 @@
                 </ul>
               </li>
               <li>
-                  <a href="<?php echo Cake\Routing\Router::url('/career3-d/users/logout');?>">Logout</a>    
+                  <a href="<?php echo Cake\Routing\Router::url('/career3-d/pages/logout');?>">Logout</a>    
               </li>
             </ul>
           </div>
